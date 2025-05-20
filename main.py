@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
+import soundfile as sf 
 from scipy.io import wavfile
 import sounddevice as sd
 
@@ -153,3 +153,52 @@ print("Lecture 8 bits :")
 sd.play(y_8bit, fe)
 sd.wait()
 
+"""
+❓Analyse du résultat
+
+    Moins de bits → moins de niveaux → plus d’erreurs d’arrondi → plus de bruit de quantification.
+
+    À 3 bits, le signal est très "en escalier", ce qui altère fortement la qualité audio.
+
+    À 8 bits, le son est encore reconnaissable, mais moins naturel.
+
+"""
+
+#question 1.2.4
+
+# Extrait par indices — à adapter selon ce que tu observes dans le plot
+
+n1 = int(0.3 * fe)   
+n2   = int(2.3 * fe)   
+
+n3 = int(4 * fe)   
+
+mot1 = y[n1:n2]
+mot2 = y[n2+1:n3]
+
+# (Optionnel) Écoute pour vérifier
+print("Mot 1 :")
+sd.play(mot1, fe)
+sd.wait()
+
+print("Mot 2 :")
+sd.play(mot2, fe)
+sd.wait()
+
+# Tracer les deux extraits
+plt.figure()
+plt.plot(mot1)
+plt.title("Mot 1")
+plt.grid(True)
+
+plt.figure()
+plt.plot(mot2)
+plt.title("Mot 2")
+plt.grid(True)
+
+plt.show()
+
+# Enregistrer les extraits
+
+sf.write("mot1.wav", mot1, fe)
+sf.write("mot2.wav", mot2, fe)
