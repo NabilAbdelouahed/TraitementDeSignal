@@ -141,3 +141,15 @@ sd.wait()
 
 #question 1.2.3
 
+# Quantification à 3 bits
+y_3bit = quantifier(y, 3)
+print("Lecture 3 bits :")
+sd.play(y_3bit, fe)
+sd.wait()
+
+# Quantification à 8 bits
+y_8bit = quantifier(y, 8)
+print("Lecture 8 bits :")
+sd.play(y_8bit, fe)
+sd.wait()
+
