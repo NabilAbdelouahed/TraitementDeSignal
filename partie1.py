@@ -94,7 +94,7 @@ fe, y = wavfile.read("audio-sig.wav")
 print(y.dtype)  # doit afficher int16
 
 # Normalisation en float32
-y = y.astype(np.float32) / 32768.0  # ou np.max(np.abs(y)) si tu veux une normalisation dynamique
+y = y.astype(np.float32) / 32768.0 
 
 print(y.dtype, np.min(y), np.max(y)) #entre 1 et -1
 
@@ -168,15 +168,14 @@ sd.wait()
 
 # Extrait par indices — à adapter selon ce que tu observes dans le plot
 
-n1 = int(0.3 * fe)   
-n2   = int(2.3 * fe)   
-
-n3 = int(4 * fe)   
+n1 = int(0.3 * fe)     #0.3s 
+n2   = int(2.3 * fe)   #2.3s 
+n3 = int(4 * fe)       #4s 
 
 mot1 = y[n1:n2]
 mot2 = y[n2+1:n3]
 
-# (Optionnel) Écoute pour vérifier
+# Écoute pour vérifier
 print("Mot 1 :")
 sd.play(mot1, fe)
 sd.wait()
