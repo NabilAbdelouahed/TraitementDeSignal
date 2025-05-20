@@ -2,8 +2,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-import numpy as np
-import matplotlib.pyplot as plt
+from scipy.io import wavfile
+import sounddevice as sd
+
 
 #question 1.1.1
 
@@ -84,4 +85,59 @@ print(f"SNR (8 bits): {snr_q8:.2f} dB\n")
 print(f"Énergie du bruit de quantification (3 bits): {energie_bruit_q3:.6f}")
 print(f"SNR (3 bits): {snr_q3:.2f} dB")
 
-#question 1.2.1
+#question 1.2.2
+
+# Charger le fichier .wav
+fe, y = wavfile.read("audio-sig.wav")
+
+# Vérifier le type
+print(y.dtype)  # doit afficher int16
+
+# Normalisation en float32
+y = y.astype(np.float32) / 32768.0  # ou np.max(np.abs(y)) si tu veux une normalisation dynamique
+
+print(y.dtype, np.min(y), np.max(y)) #entre 1 et -1
+
+#Tracer le signal en fonction du temps
+N = len(y)
+t = np.linspace(0, N / fe, N)
+
+plt.plot(t, y)
+plt.xlabel("Temps (s)")
+plt.ylabel("Amplitude")
+plt.title("Signal audio enregistré")
+plt.grid(True)
+plt.show()
+
+#Écouter le signal à différentes fréquences de restitution
+
+print("Lecture à la fréquence d’origine :")
+sd.play(y, fe)
+sd.wait()
+
+print("Lecture 2x plus rapide :")
+sd.play(y, fe * 2)
+sd.wait()
+
+print("Lecture 2x plus lente :")
+sd.play(y, fe // 2)
+sd.wait()
+
+"""
+❓Analyse du résultat
+🔸 Durée :
+
+    Restituer à 2× fe → le son est plus rapide, la durée est divisée par 2.
+
+    Restituer à 0.5× fe → le son est ralenti, la durée est doublée.
+
+🔸 Spectre :
+
+    À fréquence de restitution plus haute → son plus aigu (fréquences multipliées).
+
+    À fréquence plus basse → son plus grave (fréquences divisées).
+
+"""
+
+#question 1.2.3
+
