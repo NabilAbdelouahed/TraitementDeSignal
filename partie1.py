@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-
+import time
 import soundfile as sf 
 from scipy.io import wavfile
 import sounddevice as sd
@@ -134,21 +134,13 @@ print("Lecture 2x plus lente :")
 sd.play(y, fe // 2)
 sd.wait()
 
-"""
-❓Analyse du résultat
-🔸 Durée :
+print("Lecture 5 fe:")
+sd.play(y, fe * 5)
+sd.wait()
 
-    Restituer à 2× fe → le son est plus rapide, la durée est divisée par 2.
-
-    Restituer à 0.5× fe → le son est ralenti, la durée est doublée.
-
-🔸 Spectre :
-
-    À fréquence de restitution plus haute → son plus aigu (fréquences multipliées).
-
-    À fréquence plus basse → son plus grave (fréquences divisées).
-
-"""
+print("Lecture fe // 5:")
+sd.play(y, fe // 5)
+sd.wait()
 
 #question 1.2.3
 
@@ -179,9 +171,9 @@ sd.wait()
 
 # Extrait par indices — à adapter selon ce que tu observes dans le plot
 
-n1 = int(0.3 * fe)     #0.3s 
-n2   = int(2.3 * fe)   #2.3s 
-n3 = int(4 * fe)       #4s 
+n1 = int(0.6 * fe)     #0.3s 
+n2   = int(1.75 * fe)   #2.3s 
+n3 = int(2.6 * fe)       #4s 
 
 mot1 = y[n1:n2]
 mot2 = y[n2+1:n3]
@@ -190,6 +182,8 @@ mot2 = y[n2+1:n3]
 print("Mot 1 :")
 sd.play(mot1, fe)
 sd.wait()
+
+time.sleep(2)  # Pause pour éviter de chevaucher les sons
 
 print("Mot 2 :")
 sd.play(mot2, fe)

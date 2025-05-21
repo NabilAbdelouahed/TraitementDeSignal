@@ -92,6 +92,8 @@ En variant N on trouve plusieurs valeurs de la puissance moyenne qui restent pro
 \caption{Quantification du signal à 3 et 8 bits}
 \end{figure}
 
+Pour la quantification à 3 bits, on retrouve bien 8 niveaux de quantification.
+
 \begin{figure}[!h]
 \centering
 \includegraphics[width=17cm]{screenshots/quantification_graph_zoomed.png}
@@ -120,7 +122,7 @@ On a la méme conclusion en raisonant sur le SNR: SNRq8 > SNRq3.
 
 \subsubsection{Enregistrement}
 
-Les mots « Bonjour » et « ChatGpt » ont été enregistrés via Audacity. 
+Les mots « Bonjour » et « ChatGpt » ont été enregistrés via Audacity (voir figure \ref{fig:signal_enregistre}).
 
 \subsubsection{Restitution à différentes fréquences}
 
@@ -131,25 +133,28 @@ L’audio est lu à \( f_e \), \( 2 f_e \) et \( \frac{f_e}{2} \).
 \begin{itemize}
     \item \textbf{Durée :} doubler la fréquence de restitution divise la durée par deux (voix accélérée), tandis que la diviser par deux double la durée (voix ralentie).
     \item \textbf{Hauteur :} multiplier la fréquence de restitution rend la voix plus aiguë (fréquences doublées), la diminuer la rend plus grave (fréquences divisées).
-    \item \textbf{Applications :} cette manipulation illustre le principe de transposition spectrale et d’étirement temporel.
 \end{itemize}
+
+Lorsque la fréquence de restitution est trop grande ou trop petite comparée à la fréquence d’échantillonnage, le son devient incompréhensible. Le son est trop rapide ou trop lent, mais aussi on ne reconnaît plus les mots. Cela s'explique notamment par le déplacement des formants, c’est-à-dire des pics de résonance caractéristiques des voyelles et consonnes, qui changent de position dans le spectre. Leur modification rend la parole méconnaissable, car ce sont eux qui permettent d’identifier les sons du langage.
 
 \subsubsection{Quantification du signal audio}
 
 \begin{itemize}
     \item À 3 bits : le son devient rugueux et très bruité, fortement altéré.
     \item À 8 bits : la voix reste compréhensible mais moins naturelle.
-    \item À 16 bits (original) : qualité fidèle.
 \end{itemize}
 
 \subsubsection{Extraction et séparation de mots}
 
-Après repérage visuel, les deux mots ont été extraits via tranches temporelles, puis enregistrés :
+Après repérage visuel, les deux mots ont été extraits via tranches temporelles.
 
-\begin{lstlisting}[language=python]
-sf.write("mot1.wav", mot1, fe)
-sf.write("mot2.wav", mot2, fe)
-\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=10cm]{screenshots/signal_enregistré.png}
+\caption{Signal audio enregistré}
+\label{fig:signal_enregistre}
+\end{figure}
 
 \begin{figure}[h]
 \centering
@@ -166,49 +171,3 @@ sf.write("mot2.wav", mot2, fe)
 \end{subfigure}
 \caption{Séparation des mots dans le signal audio}
 \end{figure}
-
-
-\subsubsection{Extraction de mots}
-
-Aprés avoir identifié l'intervalle de temps pour chaque mot dans le signal enregistré on utilise ce code pour séparer les deux mots:
-\begin{lstlisting}[language=python]
-n1 = int(0.3 * fe)     #0.3s 
-n2   = int(2.3 * fe)   #2.3s 
-n3 = int(4 * fe)       #4s 
-
-mot1 = y[n1:n2]
-mot2 = y[n2+1:n3]
-
-print("Mot 1 :")
-sd.play(mot1, fe)
-sd.wait()
-
-print("Mot 2 :")
-sd.play(mot2, fe)
-sd.wait()
-\end{lstlisting}
-
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=9cm]{screenshots/mot1_graphe.png}
-        \caption{Mot 1}
-        \label{fig:mot1}
-    \end{subfigure}
-    \hfill
-    \begin{subfigure}[b]{0.45\textwidth}
-        \centering
-        \includegraphics[width=9cm]{screenshots/mot2_graphe.png}
-        \caption{Mot 2}
-        \label{fig:mot2}
-    \end{subfigure}
-    \caption{Séparation des deux mots}
-    \label{fig:Séparation des deux mots}
-\end{figure}
-
-Puis on enregistre les deux mots séparément dans des fichiers .wav :
-\begin{lstlisting}[language=python]
-    sf.write("mot1.wav", mot1, fe)
-    sf.write("mot2.wav", mot2, fe)
-\end{lstlisting}
