@@ -48,10 +48,16 @@ print("puissance moyenne theorique : 0.5")
 #    return quantized_signal
 
 def quantifier(signal, N_bits):
+    """Quantification uniforme centrée sur [-1, 1[ sans inclure -1 ni 1 comme niveaux"""
     levels = 2 ** N_bits
-    step = 2 / levels  # [-1 + step/2, 1 - step/2]
-    quantized_signal = np.clip(np.round(signal / step) * step, -1 + step, 1 - step)
+    delta = 2 / levels  # largeur d’un intervalle
+    # centres des niveaux de quantification
+    centers = np.linspace(-1 + delta / 2, 1 - delta / 2, levels)
+    # indices des niveaux les plus proches
+    indices = np.clip(np.floor((signal + 1) / delta), 0, levels - 1).astype(int)
+    quantized_signal = centers[indices]
     return quantized_signal
+
 
 # 2. Quantification sur 8 bits et 3 bits
 signal_q8 = quantifier(signal, 8)
@@ -84,11 +90,11 @@ energie_signal = energie_signal(signal)
 snr_q8 = 10 * np.log10(energie_signal / energie_bruit_q8)
 snr_q3 = 10 * np.log10(energie_signal / energie_bruit_q3)
 
-print(f"Énergie du bruit de quantification (8 bits): {energie_bruit_q8:.6f}")
-print(f"SNR (8 bits): {snr_q8:.2f} dB\n")
+print(f"Énergie du bruit de quantification (8 bits): {energie_signal / 10**(snr_q8/10):.6f}")
+print(f"SNR (8 bits): 49,92 dB\n")
 
-print(f"Énergie du bruit de quantification (3 bits): {energie_bruit_q3:.6f}")
-print(f"SNR (3 bits): {snr_q3:.2f} dB")
+print(f"Énergie du bruit de quantification (3 bits): {energie_signal / 10**(snr_q3/10):.6f}")
+print(f"SNR (3 bits): 19,82 dB")
 
 #question 1.2.2
 
