@@ -2,10 +2,11 @@
 \contentsline {section}{\numberline {1}Partie 1: Quelques opérations de base sur les signaux}{1}{section.1}%
 \contentsline {subsection}{\numberline {1.1}Signal numérique de synthèse}{1}{subsection.1.1}%
 \contentsline {subsubsection}{\numberline {1.1.1}Génération du signal}{1}{subsubsection.1.1.1}%
-\contentsline {subsubsection}{\numberline {1.1.2}Energie et puissance}{1}{subsubsection.1.1.2}%
+\contentsline {subsubsection}{\numberline {1.1.2}Énergie et puissance}{1}{subsubsection.1.1.2}%
 \contentsline {subsubsection}{\numberline {1.1.3}Quantification}{2}{subsubsection.1.1.3}%
 \contentsline {subsection}{\numberline {1.2}Signal audio}{3}{subsection.1.2}%
 \contentsline {subsubsection}{\numberline {1.2.1}Enregistrement}{3}{subsubsection.1.2.1}%
-\contentsline {subsubsection}{\numberline {1.2.2}Restitution}{3}{subsubsection.1.2.2}%
-\contentsline {subsubsection}{\numberline {1.2.3}Quantification}{4}{subsubsection.1.2.3}%
-\contentsline {subsubsection}{\numberline {1.2.4}Extraction de mots}{4}{subsubsection.1.2.4}%
+\contentsline {subsubsection}{\numberline {1.2.2}Restitution à différentes fréquences}{3}{subsubsection.1.2.2}%
+\contentsline {subsubsection}{\numberline {1.2.3}Quantification du signal audio}{3}{subsubsection.1.2.3}%
+\contentsline {subsubsection}{\numberline {1.2.4}Extraction et séparation de mots}{4}{subsubsection.1.2.4}%
+\contentsline {subsubsection}{\numberline {1.2.5}Extraction de mots}{4}{subsubsection.1.2.5}%

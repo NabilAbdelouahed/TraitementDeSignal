@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  20 MAY 2025 16:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  21 MAY 2025 11:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1175,98 +1175,113 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write5
 \openout5 = `main.toc'.
 
- (./rapport.tex [0] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-<screenshots/signal_echantillone.png, id=74, 722.7pt x 289.08pt>
+ (./rapport.tex [0]
+<screenshots/signal_echantillone.png, id=79, 722.7pt x 289.08pt>
 File: screenshots/signal_echantillone.png Graphic file (type png)
 <use screenshots/signal_echantillone.png>
-Package pdftex.def Info: screenshots/signal_echantillone.png  used on input line 28.
+Package pdftex.def Info: screenshots/signal_echantillone.png  used on input line 19.
 (pdftex.def)             Requested size: 483.69684pt x 193.47968pt.
-<screenshots/puissance_et_energie.png, id=76, 411.5375pt x 40.15pt>
-File: screenshots/puissance_et_energie.png Graphic file (type png)
-<use screenshots/puissance_et_energie.png>
-Package pdftex.def Info: screenshots/puissance_et_energie.png  used on input line 48.
-(pdftex.def)             Requested size: 411.5365pt x 40.14989pt.
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.58     min_val,
-                  max_val = np.min(signal), np.max(signal) [1 <./screenshots/signal_echantillone.png> <./screenshots/puissance_et_energie.png>]
-<screenshots/Quantification.png, id=106, 867.24pt x 433.62pt>
+l.62 \]
+        [1 <./screenshots/signal_echantillone.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+<screenshots/puissance_et_energie.png, id=95, 563.10374pt x 143.53625pt>
+File: screenshots/puissance_et_energie.png Graphic file (type png)
+<use screenshots/puissance_et_energie.png>
+Package pdftex.def Info: screenshots/puissance_et_energie.png  used on input line 83.
+(pdftex.def)             Requested size: 426.79134pt x 108.7908pt.
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+Overfull \hbox (14.18535pt too wide) in paragraph at lines 95--96
+[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
+ []
+
+<screenshots/Quantification.png, id=96, 867.24pt x 433.62pt>
 File: screenshots/Quantification.png Graphic file (type png)
 <use screenshots/Quantification.png>
-Package pdftex.def Info: screenshots/Quantification.png  used on input line 67.
+Package pdftex.def Info: screenshots/Quantification.png  used on input line 101.
 (pdftex.def)             Requested size: 483.69684pt x 241.85292pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 72--73
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- []
-
-<screenshots/snr_quantification.png, id=107, 456.70625pt x 89.33376pt>
+<screenshots/snr_quantification.png, id=97, 456.70625pt x 89.33376pt>
 File: screenshots/snr_quantification.png Graphic file (type png)
 <use screenshots/snr_quantification.png>
-Package pdftex.def Info: screenshots/snr_quantification.png  used on input line 91.
+Package pdftex.def Info: screenshots/snr_quantification.png  used on input line 122.
 (pdftex.def)             Requested size: 456.70512pt x 89.33353pt.
-[2 <./screenshots/Quantification.png> <./screenshots/snr_quantification.png>]
-<screenshots/siganl_enregistré.png, id=136, 462.528pt x 346.896pt>
-File: screenshots/siganl_enregistré.png Graphic file (type png)
-<use screenshots/siganl_enregistré.png>
-Package pdftex.def Info: screenshots/siganl_enregistré.png  used on input line 108.
-(pdftex.def)             Requested size: 426.79134pt x 320.11154pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 113--114
+LaTeX Warning: `!h' float specifier changed to `!ht'.
 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 115--117
-
- []
-
-[3 <./screenshots/siganl_enregistré.png>]
-<screenshots/mot1_graphe.png, id=146, 462.528pt x 346.896pt>
+[2 <./screenshots/puissance_et_energie.png>] [3 <./screenshots/Quantification.png> <./screenshots/snr_quantification.png>]
+<screenshots/mot1_graphe.png, id=123, 462.528pt x 346.896pt>
 File: screenshots/mot1_graphe.png Graphic file (type png)
 <use screenshots/mot1_graphe.png>
-Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 163.
+Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 165.
 (pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
 
-Overfull \hbox (38.41269pt too wide) in paragraph at lines 163--164
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 165--166
  [][] 
  []
 
-<screenshots/mot2_graphe.png, id=147, 462.528pt x 346.896pt>
+<screenshots/mot2_graphe.png, id=124, 462.528pt x 346.896pt>
 File: screenshots/mot2_graphe.png Graphic file (type png)
 <use screenshots/mot2_graphe.png>
-Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 170.
+Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 171.
 (pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
 
-Overfull \hbox (38.41269pt too wide) in paragraph at lines 170--171
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 171--172
  [][] 
  []
 
-) [4 <./screenshots/mot1_graphe.png> <./screenshots/mot2_graphe.png>] (./main.aux)
+File: screenshots/mot1_graphe.png Graphic file (type png)
+<use screenshots/mot1_graphe.png>
+Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 202.
+(pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
+
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 202--203
+ [][] 
+ []
+
+File: screenshots/mot2_graphe.png Graphic file (type png)
+<use screenshots/mot2_graphe.png>
+Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 209.
+(pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
+
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 209--210
+ [][] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+) [4 <./screenshots/mot1_graphe.png> <./screenshots/mot2_graphe.png>] [5] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: DF0D68D0485D0A0D89A57C151CB4D387;1716.
+(rerunfilecheck)             Checksum: 7E145E37D1678B7FFC375E1F473BAEF3;2194.
  ) 
 Here is how much of TeX's memory you used:
- 27472 strings out of 476182
- 495166 string characters out of 5795595
- 1951975 words of memory out of 5000000
- 48921 multiletter control sequences out of 15000+600000
- 571894 words of font info for 62 fonts, out of 8000000 for 9000
+ 27413 strings out of 476182
+ 494240 string characters out of 5795595
+ 1950975 words of memory out of 5000000
+ 48887 multiletter control sequences out of 15000+600000
+ 573805 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,8n,101p,479b,2021s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-Output written on main.pdf (6 pages, 372285 bytes).
+ 99i,8n,101p,479b,1316s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on main.pdf (7 pages, 436607 bytes).
 PDF statistics:
- 492 PDF objects out of 1000 (max. 8388607)
+ 527 PDF objects out of 1000 (max. 8388607)
  215 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
- 128 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 51 named destinations out of 1000 (max. 500000)
+ 131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

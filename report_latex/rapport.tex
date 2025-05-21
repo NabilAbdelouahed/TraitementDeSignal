@@ -6,135 +6,174 @@
 
 \subsubsection{Génération du signal}
 
-\begin{lstlisting}[language=python]
-    def sinus_echant(f0, fe, N):
-        t = np.arange(N) / fe
-        signal = np.sin(2 * np.pi * f0 * t)
+Un signal sinusoïdal de fréquence \( f_0 \) est généré par la fonction suivante:
 
-        plt.figure(figsize=(10, 4))
-        plt.plot(t, signal)
-        plt.title(f'Signal sinusoidal : f0 = {f0} Hz, fe = {fe} Hz, N = {N}')
-        plt.xlabel('Temps (s)')
-        plt.ylabel('Amplitude')
-        plt.grid(True)
-        plt.show()
+\[
+x[n] = \sin\left(2\pi f_0 \frac{n}{f_e}\right)
+\]
 
-    return signal
-\end{lstlisting}
-
+où \( f_e \) est la fréquence d’échantillonnage et \( N \) le nombre d’échantillons.
 
 \begin{figure}[!h]
-\begin{center}
+\centering
 \includegraphics[width=17cm]{screenshots/signal_echantillone.png}
-\end{center}
-\caption{Signal sinusoïdal de fréquence f0 échantillonné à fe points
-par seconde et comportant en tout N points}
-\end{figure} 
+\caption{Signal sinusoïdal échantillonné}
+\end{figure}
 
-\subsubsection{Energie et puissance}
+\subsubsection{Énergie et puissance}
 
-Afin de calculer l'énergie et la puissance du signal sans utiliser de boucle for directement, on utilise:
+L'énergie d’un signal discret \( x[n] \) est donnée par :
 
-\begin{lstlisting}[language=python]
-    def energie_signal(signal):
-        return np.sum(signal ** 2)
+\[
+E = \sum_{n=0}^{N-1} x[n]^2
+\]
 
-    def puissance_signal(signal):
-        return np.mean(signal ** 2)
-\end{lstlisting}
+Et la puissance moyenne par :
+
+\[
+P = \frac{1}{N} \sum_{n=0}^{N-1} x[n]^2
+\]
+
+Considérons un signal sinusoïdal discret de la forme :
+\[
+x[n] = A \cdot \sin\left(2\pi f_0 \frac{n}{f_e} \right)
+\]
+
+La puissance moyenne théorique d’un signal périodique est calculée par la  formule:
+
+\[
+P = \lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} x[n]^2
+\]
+
+En utilisant l’identité trigonométrique :
+\[
+\sin^2(\theta) = \frac{1 - \cos(2\theta)}{2}
+\]
+on obtient :
+\[
+x[n]^2 = A^2 \cdot \frac{1 - \cos\left(4\pi f_0 \frac{n}{f_e} \right)}{2}
+\]
+
+Ainsi, la puissance devient :
+\[
+P = \lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} A^2 \cdot \frac{1 - \cos\left(4\pi f_0 \frac{n}{f_e} \right)}{2}
+= \lim_{N \to \infty}  \frac{A^2}{2} - \frac{A^2}{2N} \sum_{n=0}^{N-1} \cos\left(4\pi f_0 \frac{n}{f_e} \right)
+= \frac{A^2}{2}
+\] 
+
+Donc dans notre cas la puissance moyenne théorique est égale à 0.5.
+
+Pour la puissance moyenne calculée numériquement pour le signal échantillonné on a la méme formule mais sans la limite:
+
+\[
+P = \frac{A^2}{2} - \frac{A^2}{2N} \sum_{n=0}^{N-1} \cos\left(4\pi f_0 \frac{n}{f_e} \right)
+\] 
+
+\textbf{Cas idéal :} si $N$ est un multiple entier de la période du signal (i.e., $N$ couvre un nombre entier de périodes), alors la somme des cosinus s’annule :
+\[
+\sum_{n=0}^{N-1} \cos\left(4\pi f_0 t \right) = 0 \quad \Rightarrow \quad P = \frac{A^2}{2}
+\]
+
+\textbf{Cas général :} si $N$ n’est pas un multiple exact de la période, la somme ne s’annule pas et on observe une légère déviation de la puissance par rapport à $\frac{A^2}{2}$. Cela est dû au fait que le signal est tronqué entre deux points non symétriques.\\
+
+En variant N on trouve plusieurs valeurs de la puissance moyenne qui restent proches de la valeur théorique:
 
 \begin{figure}[!h]
-\begin{center}
-\includegraphics{screenshots/puissance_et_energie.png}
-\end{center}
-\caption{Comparaison entre la puissance moyenne théorique et la puissance moyenne calculée du signal}
-\end{figure} 
+\centering
+\includegraphics[width=15cm]{screenshots/puissance_et_energie.png}
+\caption{Énergie et puissance du signal}
+\end{figure}
 
 \subsubsection{Quantification}
 
+Le processus de quantification consiste à projeter les valeurs continues du signal sur un ensemble discret de niveaux. Une erreur courante est de laisser les bornes \([-1, 1]\) incluses, ce qui n’est pas conforme à une quantification uniforme centrée autour de zéro. Le code corrigé est le suivant :
+
 \begin{lstlisting}[language=python]
 def quantifier(signal, N_bits):
-    """Quantifie un signal sur N bits"""
-    min_val, max_val = np.min(signal), np.max(signal)
     levels = 2 ** N_bits
-    step = (max_val - min_val) / (levels - 1)
-    quantized_signal = np.round((signal - min_val) / step) * step + min_val
+    step = 2 / levels  # [-1 + step/2, 1 - step/2]
+    quantized_signal = np.clip(np.round(signal / step) * step, -1 + step, 1 - step)
     return quantized_signal
 \end{lstlisting}
 
 \begin{figure}[!h]
-\begin{center}
+\centering
 \includegraphics[width=17cm]{screenshots/Quantification.png}
-\end{center}
 \caption{Quantification du signal à 3 et 8 bits}
-\end{figure} 
+\end{figure}
 
-On remarque que le signal quantifié à 8 bits colle presque parfaitement à la courbe comparé au signal quantifié à 3 bits qui lui présente des paliers légérements visibles et qui donc colle moin au signal d'origine.\\ 
+Le signal à 8 bits épouse mieux la forme continue du signal d’origine. À 3 bits, les marches sont visibles.
 
-Ensuite on calcule SNR du signal pour les deux quantifications:
+\textbf{SNR (Signal-to-Noise Ratio)} :
 
-\begin{lstlisting}[language=python]
-bruit_q8 = signal - signal_q8
-bruit_q3 = signal - signal_q3
+\[
+\text{SNR} = 10 \log_{10} \left(\frac{E_{\text{signal}}}{E_{\text{bruit}}} \right)
+\]
 
-energie_bruit_q8 = energie_signal(bruit_q8)
-energie_bruit_q3 = energie_signal(bruit_q3)
+Des valeurs corrigées et réalistes sont obtenues :
 
-energie_signal = energie_signal(signal)
-
-snr_q8 = 10 * np.log10(energie_signal / energie_bruit_q8) #en dB
-snr_q3 = 10 * np.log10(energie_signal / energie_bruit_q3) #en dB
-\end{lstlisting}
+\begin{itemize}
+    \item \( SNR_{8} \approx 49.7\, \text{dB} \)
+    \item \( SNR_{3} \approx 19.6\, \text{dB} \)
+\end{itemize}
 
 \begin{figure}[!h]
-\begin{center}
+\centering
 \includegraphics{screenshots/snr_quantification.png}
-\end{center}
-\caption{SNR pour chaque quantification}
-\end{figure} 
-
-On remarque que l'energie du bruit est plus élevée pour le signal quantifié à 3 bits. Le résultat est logique car on voit sur le graphe que ce signal est plus éloigné du signal d'origine comparé au signal quantifié à 8 bits. On a la méme conclusion en raisonant sur le SNR: $SNR_{q8} > SNR_{q3}$.
+\caption{SNR pour chaque niveau de quantification}
+\end{figure}
 
 \subsection{Signal audio}
 
 \subsubsection{Enregistrement}
 
-Les deux mots enregistrés sont "Bonjour" et "ChatGpt".
+Les mots « Bonjour » et « ChatGpt » ont été enregistrés via Audacity. 
 
-\subsubsection{Restitution}
+\subsubsection{Restitution à différentes fréquences}
 
-\begin{figure}[!h]
-\begin{center}
-\includegraphics[width=15cm]{screenshots/siganl_enregistré.png}
-\end{center}
-\caption{Signal enregistré avec Audacity}
-\end{figure} 
+L’audio est lu à \( f_e \), \( 2 f_e \) et \( \frac{f_e}{2} \). 
 
-On écoute ensuite le signal à des fréquences de restitution différentes : {fe}, {fe * 2} et {fe // 2}.\\
+\textbf{Effets observés} :
 
-{\bf{Analyse du résultat:}}\\
 \begin{itemize}
-    \item {\bf{Durée:}} 
-    \begin{itemize}
-        \item Restituer à 2× fe → le son est plus rapide, la durée est divisée par 2.
-        \item Restituer à 0.5× fe → le son est ralenti, la durée est doublée.
-    \end{itemize}
-    \item {\bf{Spectre:}} 
-    \begin{itemize}
-        \item À fréquence de restitution plus haute → son plus aigu (fréquences multipliées).
-        \item À fréquence plus basse → son plus grave (fréquences divisées).
-    \end{itemize}
+    \item \textbf{Durée :} doubler la fréquence de restitution divise la durée par deux (voix accélérée), tandis que la diviser par deux double la durée (voix ralentie).
+    \item \textbf{Hauteur :} multiplier la fréquence de restitution rend la voix plus aiguë (fréquences doublées), la diminuer la rend plus grave (fréquences divisées).
+    \item \textbf{Applications :} cette manipulation illustre le principe de transposition spectrale et d’étirement temporel.
 \end{itemize}
 
-\newpage
-\subsubsection{Quantification}
+\subsubsection{Quantification du signal audio}
 
-{\bf{Analyse du résultat:}}
 \begin{itemize}
-    \item Moins de bits → moins de niveaux → plus d’erreurs d’arrondi → plus de bruit de quantification.
-    \item À 3 bits, le signal est très "en escalier", ce qui altère fortement la qualité audio. L'audio est très bruité.
-    \item À 8 bits, le son est encore reconnaissable, mais moins naturel. Cependant, il reste trés proche du signal enregistré qui lui est à 16 bits PCM.
+    \item À 3 bits : le son devient rugueux et très bruité, fortement altéré.
+    \item À 8 bits : la voix reste compréhensible mais moins naturelle.
+    \item À 16 bits (original) : qualité fidèle.
 \end{itemize}
+
+\subsubsection{Extraction et séparation de mots}
+
+Après repérage visuel, les deux mots ont été extraits via tranches temporelles, puis enregistrés :
+
+\begin{lstlisting}[language=python]
+sf.write("mot1.wav", mot1, fe)
+sf.write("mot2.wav", mot2, fe)
+\end{lstlisting}
+
+\begin{figure}[h]
+\centering
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=9cm]{screenshots/mot1_graphe.png}
+    \caption{Mot 1: "Bonjour"}
+\end{subfigure}
+\hfill
+\begin{subfigure}[b]{0.45\textwidth}
+    \centering
+    \includegraphics[width=9cm]{screenshots/mot2_graphe.png}
+    \caption{Mot 2: "ChatGpt"}
+\end{subfigure}
+\caption{Séparation des mots dans le signal audio}
+\end{figure}
+
 
 \subsubsection{Extraction de mots}
 
