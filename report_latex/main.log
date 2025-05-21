@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  21 MAY 2025 11:19
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  21 MAY 2025 11:38
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1196,65 +1196,68 @@ File: screenshots/puissance_et_energie.png Graphic file (type png)
 <use screenshots/puissance_et_energie.png>
 Package pdftex.def Info: screenshots/puissance_et_energie.png  used on input line 83.
 (pdftex.def)             Requested size: 426.79134pt x 108.7908pt.
-(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
-File: lstlang1.sty 2023/02/27 1.9 listings language file
-)
-Overfull \hbox (14.18535pt too wide) in paragraph at lines 95--96
-[][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
- []
-
-<screenshots/Quantification.png, id=96, 867.24pt x 433.62pt>
-File: screenshots/Quantification.png Graphic file (type png)
-<use screenshots/Quantification.png>
-Package pdftex.def Info: screenshots/Quantification.png  used on input line 101.
+<screenshots/quantification_graph.png, id=96, 867.24pt x 433.62pt>
+File: screenshots/quantification_graph.png Graphic file (type png)
+<use screenshots/quantification_graph.png>
+Package pdftex.def Info: screenshots/quantification_graph.png  used on input line 91.
+(pdftex.def)             Requested size: 441.01772pt x 220.50809pt.
+<screenshots/quantification_graph_zoomed.png, id=97, 867.24pt x 433.62pt>
+File: screenshots/quantification_graph_zoomed.png Graphic file (type png)
+<use screenshots/quantification_graph_zoomed.png>
+Package pdftex.def Info: screenshots/quantification_graph_zoomed.png  used on input line 97.
 (pdftex.def)             Requested size: 483.69684pt x 241.85292pt.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<screenshots/snr_quantification.png, id=97, 456.70625pt x 89.33376pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
+
+ []
+
+[2 <./screenshots/puissance_et_energie.png> <./screenshots/quantification_graph.png>]
+<screenshots/snr_quantification.png, id=107, 456.70625pt x 88.33pt>
 File: screenshots/snr_quantification.png Graphic file (type png)
 <use screenshots/snr_quantification.png>
-Package pdftex.def Info: screenshots/snr_quantification.png  used on input line 122.
-(pdftex.def)             Requested size: 456.70512pt x 89.33353pt.
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2 <./screenshots/puissance_et_energie.png>] [3 <./screenshots/Quantification.png> <./screenshots/snr_quantification.png>]
-<screenshots/mot1_graphe.png, id=123, 462.528pt x 346.896pt>
+Package pdftex.def Info: screenshots/snr_quantification.png  used on input line 111.
+(pdftex.def)             Requested size: 456.70512pt x 88.32977pt.
+ [3 <./screenshots/quantification_graph_zoomed.png> <./screenshots/snr_quantification.png>] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2023/02/27 1.9 listings language file
+)
+<screenshots/mot1_graphe.png, id=118, 462.528pt x 346.896pt>
 File: screenshots/mot1_graphe.png Graphic file (type png)
 <use screenshots/mot1_graphe.png>
-Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 165.
+Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 158.
 (pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
 
-Overfull \hbox (38.41269pt too wide) in paragraph at lines 165--166
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 158--159
  [][] 
  []
 
-<screenshots/mot2_graphe.png, id=124, 462.528pt x 346.896pt>
+<screenshots/mot2_graphe.png, id=119, 462.528pt x 346.896pt>
 File: screenshots/mot2_graphe.png Graphic file (type png)
 <use screenshots/mot2_graphe.png>
-Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 171.
+Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 164.
 (pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
 
-Overfull \hbox (38.41269pt too wide) in paragraph at lines 171--172
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 164--165
  [][] 
  []
 
 File: screenshots/mot1_graphe.png Graphic file (type png)
 <use screenshots/mot1_graphe.png>
-Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 202.
+Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 195.
+(pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
+
+Overfull \hbox (38.41269pt too wide) in paragraph at lines 195--196
+ [][] 
+ []
+
+File: screenshots/mot2_graphe.png Graphic file (type png)
+<use screenshots/mot2_graphe.png>
+Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 202.
 (pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
 
 Overfull \hbox (38.41269pt too wide) in paragraph at lines 202--203
- [][] 
- []
-
-File: screenshots/mot2_graphe.png Graphic file (type png)
-<use screenshots/mot2_graphe.png>
-Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 209.
-(pdftex.def)             Requested size: 256.0748pt x 192.06375pt.
-
-Overfull \hbox (38.41269pt too wide) in paragraph at lines 209--210
  [][] 
  []
 
@@ -1270,18 +1273,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 7E145E37D1678B7FFC375E1F473BAEF3;2194.
  ) 
 Here is how much of TeX's memory you used:
- 27413 strings out of 476182
- 494240 string characters out of 5795595
- 1950975 words of memory out of 5000000
- 48887 multiletter control sequences out of 15000+600000
- 573805 words of font info for 65 fonts, out of 8000000 for 9000
+ 27404 strings out of 476182
+ 494435 string characters out of 5795595
+ 1952975 words of memory out of 5000000
+ 48884 multiletter control sequences out of 15000+600000
+ 573428 words of font info for 64 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,8n,101p,479b,1316s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
-Output written on main.pdf (7 pages, 436607 bytes).
+ 99i,8n,101p,479b,1290s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on main.pdf (7 pages, 467477 bytes).
 PDF statistics:
- 527 PDF objects out of 1000 (max. 8388607)
- 215 compressed objects within 3 object streams
- 51 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 510 PDF objects out of 1000 (max. 8388607)
+ 205 compressed objects within 3 object streams
+ 46 named destinations out of 1000 (max. 500000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -39,14 +39,19 @@ print("puissance moyenne theorique : 0.5")
 
 #question 1.1.3
 
-def quantifier(signal, N_bits):
-    """Quantifie un signal sur N bits"""
-    min_val, max_val = np.min(signal), np.max(signal)
-    levels = 2 ** N_bits
-    step = (max_val - min_val) / (levels - 1)
-    quantized_signal = np.round((signal - min_val) / step) * step + min_val
-    return quantized_signal
+#def quantifier(signal, N_bits):
+#    """Quantifie un signal sur N bits"""
+#    min_val, max_val = np.min(signal), np.max(signal)
+#    levels = 2 ** N_bits
+#    step = (max_val - min_val) / (levels - 1)
+#   quantized_signal = np.round((signal - min_val) / step) * step + min_val
+#    return quantized_signal
 
+def quantifier(signal, N_bits):
+    levels = 2 ** N_bits
+    step = 2 / levels  # [-1 + step/2, 1 - step/2]
+    quantized_signal = np.clip(np.round(signal / step) * step, -1 + step, 1 - step)
+    return quantized_signal
 
 # 2. Quantification sur 8 bits et 3 bits
 signal_q8 = quantifier(signal, 8)

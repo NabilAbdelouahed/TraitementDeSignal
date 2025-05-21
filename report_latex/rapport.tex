@@ -86,23 +86,19 @@ En variant N on trouve plusieurs valeurs de la puissance moyenne qui restent pro
 
 \subsubsection{Quantification}
 
-Le processus de quantification consiste à projeter les valeurs continues du signal sur un ensemble discret de niveaux. Une erreur courante est de laisser les bornes \([-1, 1]\) incluses, ce qui n’est pas conforme à une quantification uniforme centrée autour de zéro. Le code corrigé est le suivant :
-
-\begin{lstlisting}[language=python]
-def quantifier(signal, N_bits):
-    levels = 2 ** N_bits
-    step = 2 / levels  # [-1 + step/2, 1 - step/2]
-    quantized_signal = np.clip(np.round(signal / step) * step, -1 + step, 1 - step)
-    return quantized_signal
-\end{lstlisting}
-
 \begin{figure}[!h]
 \centering
-\includegraphics[width=17cm]{screenshots/Quantification.png}
+\includegraphics[width=15.5cm]{screenshots/quantification_graph.png}
 \caption{Quantification du signal à 3 et 8 bits}
 \end{figure}
 
-Le signal à 8 bits épouse mieux la forme continue du signal d’origine. À 3 bits, les marches sont visibles.
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/quantification_graph_zoomed.png}
+\caption{Zoom sur la quantification du signal à 3 et 8 bits}
+\end{figure}
+
+Le signal à 8 bits suit mieux la forme continue du signal d’origine sauf sur les sommets car les niveaux -1 et 1 sont interdits. À 3 bits, les marches sont visibles et le signal produit est significativement moins fidéle au signal d'origine.\\
 
 \textbf{SNR (Signal-to-Noise Ratio)} :
 
@@ -110,18 +106,15 @@ Le signal à 8 bits épouse mieux la forme continue du signal d’origine. À 3 
 \text{SNR} = 10 \log_{10} \left(\frac{E_{\text{signal}}}{E_{\text{bruit}}} \right)
 \]
 
-Des valeurs corrigées et réalistes sont obtenues :
-
-\begin{itemize}
-    \item \( SNR_{8} \approx 49.7\, \text{dB} \)
-    \item \( SNR_{3} \approx 19.6\, \text{dB} \)
-\end{itemize}
-
 \begin{figure}[!h]
 \centering
 \includegraphics{screenshots/snr_quantification.png}
 \caption{SNR pour chaque niveau de quantification}
 \end{figure}
+
+On remarque que l'energie du bruit est plus élevée pour le signal quantifié à 3 bits. Le résultat est logique
+car on voit sur le graphe que ce signal est plus éloigné du signal d'origine comparé au signal quantifié à 8 bits.
+On a la méme conclusion en raisonant sur le SNR: SNRq8 > SNRq3.
 
 \subsection{Signal audio}
 
