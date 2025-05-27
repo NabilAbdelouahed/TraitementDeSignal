@@ -256,8 +256,8 @@ Pour convertir les abcisses en secondes, on utilise la formule :
 
 L'ecart est trop petit entre les deux méthodes (de l'ordre de \(10^{-12}\)). Ceci est dû à la précision numérique des calculs et au fait que l'autocorrelation numpy est calculée différemment en utilisant plusieurs techniques d'optimisation.\\
 
-On calcule le rapport des energies entre la différence entre les deux méthodes et l'autocorrelation de numpy :
-\[ \text{rapport} = \frac{\sum_{k=0}^{N-1} \text{diff}[k]^2}{\sum_{k=0}^{N-1} \text{autocorr}[k]^2} \]
+On calcule le rapport des énergies entre la différence entre les deux méthodes et l'autocorrelation de numpy:
+\[ \text{rapport} = \frac{\sum_{k=0}^{N-1} \text{diff}[k]^2}{\sum_{k=0}^{N-1} \text{autocorr}[k]^2} \] \\
 
 On trouve plusieurs valeurs de rapport pour différentes valeurs de N. Ceci est dû à la variation de l'énergie du signal en fonction de N, car l'autocorrelation et l'énergie sont sensibles à la longueur du signal (somme de 0 à N-1). On rajoute donc des valeurs au numérateur et au dénominateur dans le calcul de ce rapport (qui ne sont pas équivalentes vu l'écart entre les deux méthodes) ce qui expliques des valeurs de rapport différentes.
 
