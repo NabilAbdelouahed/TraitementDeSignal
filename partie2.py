@@ -2,22 +2,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-# 2.1 
-
-def autocorrelation_theorique_sinus(A, f, tau):
-    """
-    Calcule l'autocorrélation théorique d'un sinus A*sin(2πft)
-    
-    Paramètres :
-    - A : amplitude du sinus
-    - f : fréquence en Hz
-    - tau : vecteur de lags (décalages temporels) en secondes (numpy array)
-    
-    Retour :
-    - R(tau) : autocorrélation théorique
-    """
-    return (A ** 2) / 2 * np.cos(2 * np.pi * f * tau)
-
 # 2.2
 def sinus_echant(f0, fe, N):
     t = np.arange(N) / fe
@@ -33,40 +17,13 @@ def sinus_echant(f0, fe, N):
 
     return signal
 
-t = np.arange(1000) / 100
-x = sinus_echant(5, 500, 1000) 
+f = 5
+fe = 500
+N = 1000
+t = np.arange(N) / fe
+x = sinus_echant(f, fe, N) 
 
 def autocorrelation_manual(x):
-    N = len(x)
-    r = np.zeros(2*N - 1)
-    for k in range(-N + 1, N):
-        somme = 0
-        for n in range(N - abs(k)):
-            somme += x[n] * x[n + k] if k >= 0 else x[n - k] * x[n]
-        r[k + N - 1] = somme
-    return r
-
-
-# Calcul manuel
-r_manual = autocorrelation_manual(x)
-
-# Calcul avec NumPy
-r_numpy = np.correlate(x, x, mode='full')
-
-# Tracé
-plt.figure(figsize=(10, 4))
-plt.plot(r_manual, label="Autocorrélation manuelle", linestyle='--')
-plt.plot(r_numpy, label="Autocorrélation NumPy", alpha=0.6)
-plt.title("Comparaison de l'autocorrélation (valeurs seulement)")
-plt.xlabel("Indice")
-plt.ylabel("Amplitude")
-plt.legend()
-plt.grid(True)
-plt.tight_layout()
-plt.show()
-
-
-def autocorrelation_with_lags(x):
     N = len(x)
     r = np.zeros(2*N - 1)
     lags = np.arange(-N + 1, N)
@@ -78,35 +35,32 @@ def autocorrelation_with_lags(x):
     return lags, r
 
 # Recalcul avec lags
-lags_manual, r_manual = autocorrelation_with_lags(x)
+lags_manual, r_manual = autocorrelation_manual(x)
 
 # Lags et corrélation avec NumPy
 r_numpy = np.correlate(x, x, mode='full')
 lags_numpy = np.arange(-len(x)+1, len(x))
 
-r_sinus = autocorrelation_theorique_sinus(1, 5, lags_numpy/500)
+Te = 1 / fe
+tau = lags_manual * Te
 
-r_manual_norm = r_manual / np.max(r_manual)
-r_numpy_norm = r_numpy / np.max(r_numpy)
-r_sinus_norm = r_sinus / np.max(np.abs(r_sinus)) 
+diff = r_manual - r_numpy
 
-
-# Tracé avec abscisses correctes
+# Tracé avec axe en secondes
 plt.figure(figsize=(10, 4))
-plt.plot(lags_numpy, r_sinus, label='Autocorrélation théorique')
-plt.plot(lags_manual, r_manual, label="Autocorrélation manuelle", linestyle='--')
-plt.plot(lags_numpy, r_numpy, label="Autocorrélation NumPy", alpha=0.6)
-plt.title("Comparaison avec les lags (décalages)")
-plt.xlabel("Décalage (échantillons)")
+plt.plot(tau, diff, '--', label="Ecart autocorrélation (manuel - NumPy)")
+plt.title("Comparaison des autocorrélations")
+plt.xlabel("Décalage (secondes)")
 plt.ylabel("Amplitude")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()
 plt.show()
 
-"""
-Obtenez-vous ce qui est attendu et si non, pourquoi ?
+def energie_signal(signal):
+    return np.sum(signal ** 2)
 
-Non, pas au début car l'autocorrelation est centrée en 0 (symetrique a l'axe des ordonnées) et sur le tracé elle ne l'est pas.
-il faut donc calculer les lags pour que le tracé soit correct.
-"""
+
+
+rapport = energie_signal(diff) / energie_signal(r_numpy)
+print(f"Rapport d'énergie (diff vs autocorrélation NumPy) : {rapport:.4e}")

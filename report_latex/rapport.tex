@@ -171,3 +171,98 @@ Après repérage visuel, les deux mots ont été extraits via tranches temporell
 \end{subfigure}
 \caption{Séparation des mots dans le signal audio}
 \end{figure}
+
+\section{Partie 2: Classification des signaux}
+
+\subsection{Exemple de calcul théorique}
+
+Soit un signal sinusoïdal discret défini par :
+\[
+x[n] = A \sin(2\pi f n T_e)
+\]
+
+L'autocorrélation théorique du signal discret est définie par :
+\[
+R_{xx}[k] = \lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} x[n] \cdot x[n+k]
+\]
+
+En remplaçant l’expression de \( x[n] \) :
+\[
+R_{xx}[k] = \lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} A \sin(2\pi f n T_e) \cdot A \sin(2\pi f (n + k) T_e)
+\]
+
+\[
+= A^2 \cdot \lim_{N \to \infty} \frac{1}{N} \sum_{n=0}^{N-1} \sin(2\pi f n T_e) \cdot \sin(2\pi f n T_e + 2\pi f k T_e)
+\]
+
+En utilisant l'identité trigonométrique :
+\[
+\sin(a)\sin(b) = \frac{1}{2} [\cos(a - b) - \cos(a + b)]
+\]
+
+On a :
+\[
+\sin(2\pi f n T_e) \cdot \sin(2\pi f n T_e + 2\pi f k T_e) = \frac{1}{2} \left[ \cos(2\pi f k T_e) - \cos(4\pi f n T_e + 2\pi f k T_e) \right]
+\]
+
+\[
+\Rightarrow R_{xx}[k] = \frac{A^2}{2} \cos(2\pi f k T_e)
+\]
+
+car la somme de \( \cos(4\pi f n T_e + \cdot) \) sur une grande fenêtre \( N \) tend vers 0.
+
+\textbf{Conclusion :} l'autocorrélation théorique du signal sinusoïdal discret est donnée par :
+\[
+\boxed{R_{xx}[k] = \frac{A^2}{2} \cos(2\pi f k T_e)}
+\]
+
+où :
+\begin{itemize}
+  \item \( A \) est l’amplitude du signal,
+  \item \( f \) est la fréquence du signal en Hz,
+  \item \( T_e = \frac{1}{f_e} \) est la période d’échantillonnage,
+  \item \( k \in \mathbb{Z} \) est le décalage (lag) discret.
+\end{itemize}
+
+\subsection{Programmation}
+
+On calcule l'autocorrélation pour un signal sinusoïdal échantillonné en utilisant la formule : 
+\[
+R_{xx}[k] = \frac{1}{N} \sum_{n=0}^{N-1} x[n] \cdot x[n+k]
+\]
+
+\begin{lstlisting}[language=Python]
+    def autocorrelation_manual(x):
+    N = len(x)
+    r = np.zeros(2*N - 1)
+    lags = np.arange(-N + 1, N)
+    for k in range(-N + 1, N):
+        somme = 0
+        for n in range(N - abs(k)):
+            somme += x[n] * x[n + k] if k >= 0 else x[n - k] * x[n]
+        r[k + N - 1] = somme
+    return lags, r
+\end{lstlisting}
+
+On compare avec l'autocorrelation calculée avec numpy et on trace la différence entre les deux résultats pour visualiser les écarts.
+Pour convertir les abcisses en secondes, on utilise la formule :  
+\[ \text{t} = {\text{k}}.{T_e} = \frac{\text{k}}{f_e} \]
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/ecart_autocorrelation.png}
+\caption{Ecart entre l'autocorrélation manuelle et celle de numpy}
+\end{figure} 
+
+L'ecart est trop petit entre les deux méthodes (de l'ordre de \(10^{-12}\)). Ceci est dû à la précision numérique des calculs et au fait que l'autocorrelation numpy est calculée différemment en utilisant plusieurs techniques d'optimisation.\\
+
+On calcule le rapport des energies entre la différence entre les deux méthodes et l'autocorrelation de numpy :
+\[ \text{rapport} = \frac{\sum_{k=0}^{N-1} \text{diff}[k]^2}{\sum_{k=0}^{N-1} \text{autocorr}[k]^2} \]
+
+On trouve plusieurs valeurs de rapport pour différentes valeurs de N. Ceci est dû à la variation de l'énergie du signal en fonction de N, car l'autocorrelation et l'énergie sont sensibles à la longueur du signal (somme de 0 à N-1). On rajoute donc des valeurs au numérateur et au dénominateur dans le calcul de ce rapport (qui ne sont pas équivalentes vu l'écart entre les deux méthodes) ce qui expliques des valeurs de rapport différentes.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/valeur_rapport.png}
+\caption{Valeurs du rapport pour plusieurs valeurs de N}
+\end{figure} 
