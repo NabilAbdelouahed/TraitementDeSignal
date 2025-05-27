@@ -38,6 +38,8 @@
 \usepackage{pdfpages}
 \usepackage{listings}
 \usepackage{indentfirst}
+\usepackage{xcolor}
+
 
 
 %====================== INFORMATION ET REGLES ======================
@@ -56,7 +58,16 @@ pdfkeywords = {Tag1, Tag2, Tag3, ...},	% Mots-clefs
 pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
 %pdfcreator = {MikTeX},% Logiciel qui a crée le document
 %pdfproducer = {}} % Société avec produit le logiciel
-
+\lstset{
+    language=Python,
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    showstringspaces=false,
+    breaklines=true,
+    frame=single
+}
 %======================== DEBUT DU DOCUMENT ========================
 
 \begin{document}

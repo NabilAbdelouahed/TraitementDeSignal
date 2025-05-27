@@ -263,6 +263,73 @@ On trouve plusieurs valeurs de rapport pour différentes valeurs de N. Ceci est 
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=17cm]{screenshots/valeur_rapport.png}
+\includegraphics[width=15cm]{screenshots/valeur_rapport.png}
 \caption{Valeurs du rapport pour plusieurs valeurs de N}
 \end{figure} 
+
+\subsection{Application à la classification de quelques signaux simples}
+
+On génére les signaux demandés avec le code suivant :
+\newpage
+\begin{lstlisting}[language=Python]
+# Parametres communs
+fe = 11000          # frequence d'echantillonnage
+duration = 1     # duree en secondes
+t = np.linspace(0, duration, int(fe * duration), endpoint=False)
+
+# 1. Signal sinusoidal de 200 Hz
+f = 200
+sinus = np.sin(2 * np.pi * f * t)
+
+# 2. Signal triangulaire centre en 0 (serie de Fourier avec 10 termes)
+tri = np.zeros_like(t)
+for k in range(1, 11):
+    n = 2 * k - 1  # uniquement les harmoniques impaires
+    tri += ((-1)**((k+1)) / n**2) * np.sin(2 * np.pi * n * f * t)
+tri *= (8 / (np.pi**2))  # normalisation serie de Fourier
+
+# 3. Bruit blanc gaussien
+taille = fe  # 1 seconde
+bruit = np.random.randn(taille)
+bruit /= np.max(np.abs(bruit))  # normalisation pour eviter la saturation
+\end{lstlisting}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/generation_signaux.png}
+\caption{Signaux générés}
+\end{figure} 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/generation_signaux_zoom.png}
+\caption{Signaux générés (zoom)} 
+\end{figure} 
+
+\newpage
+
+On calcule l'autocorrélation pour chaque signal sur une partie de durée de 30ms. C’est une durée typique en traitement du signal pour analyser la parole (équilibre entre résolution temporelle et fréquence). Elle est suffisante pour voir une structure (formants, périodicité...) sans mélanger des parties trop différentes du signal.\\
+
+Un signal est dit \textbf{stationnaire} si ses propriétés statistiques, telles que la moyenne, la variance et l'autocorrélation, ne varient pas dans le temps.\\
+
+L'analyse des autocorrélations montre que :
+\begin{itemize}
+    \item Le signal vocal « aa » est \textbf{non stationnaire} car ses caractéristiques changent entre différentes tranches temporelles (voix humaine évolue dans le temps).
+    \item Le signal de bruit blanc gaussien est \textbf{stationnaire}, ses propriétés statistiques étant constantes dans le temps (Pic au centre, décroissance rapide).
+    \item Les signaux sinusoïdal et triangulaire, synthétisés sur quelques périodes, sont également \textbf{stationnaires} car ils sont périodiques et leurs statistiques ne varient pas dans le temps.
+\end{itemize}
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/autocorr_signaux_30ms.png}
+\caption{autocorrélation des signaux sur 30ms} 
+\end{figure} 
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=17cm]{screenshots/autocorr_signaux_80ms.png}
+\caption{autocorrélation des signaux sur 80ms} 
+\end{figure} 
+
+\subsection{Classification de signaux de parole voisés ou non voisés}
+
