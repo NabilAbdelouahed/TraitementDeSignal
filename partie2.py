@@ -3,7 +3,11 @@ import matplotlib.pyplot as plt
 from scipy.io.wavfile import write
 import sounddevice as sd
 from scipy.io import wavfile
-from scipy.signal import correlate
+import librosa
+import soundfile as sf
+from scipy.signal import correlate, find_peaks
+
+
 # 2.2
 def sinus_echant(f0, fe, N):
     t = np.arange(N) / fe
@@ -157,3 +161,64 @@ for i, (label, ac) in enumerate(autocorrs.items(), 1):
 
 plt.tight_layout()
 plt.show()
+
+
+# Q 2.4
+
+fe_chat, chat = wavfile.read("chat_resample.wav")
+
+def autocorr_sig(x):
+    x = x - np.mean(x)
+    r = correlate(x, x, mode='full')
+    r = r[len(r)//2:]
+    r /= np.max(r)
+    return r
+
+def extract_tranche(signal, fe, start_ms, duration_ms):
+    start = int(start_ms * fe / 1000)
+    end = start + int(duration_ms * fe / 1000)
+    return signal[start:end]
+
+# Exemple : analyser 3 tranches
+tranches = {
+    "chhh": extract_tranche(chat, fe, 1000, 30),
+    "transition": extract_tranche(chat, fe, 1400, 30),
+    "aaa": extract_tranche(chat, fe, 1600, 30),
+}
+
+plt.figure(figsize=(12, 4))
+for i, (label, tranche) in enumerate(tranches.items()):
+    ac = autocorr_sig(tranche)
+    plt.subplot(1, 3, i+1)
+    plt.plot(ac)
+    plt.title(f"Autocorrélation - {label}")
+    plt.grid(True)
+
+plt.tight_layout()
+plt.show()
+
+
+def freq_fondamentale(ac, fe):
+    peaks, _ = find_peaks(ac, height=0.05, distance=40)
+    plt.plot(ac_a)
+    plt.plot(peaks, ac_a[peaks], "x")
+    plt.title("Autocorrélation de 'aaa' avec pics détectés")
+    plt.grid(True)
+    plt.show()
+    if len(peaks) > 1:
+        print(f"Pics détectés : {peaks[:4]}")
+        delay = peaks[1]
+        print(delay)
+        return fe / delay
+    return None
+
+# Normalisation
+for key in tranches:
+    tranches[key] = tranches[key] / np.max(np.abs(tranches[key]))
+
+ac_a = autocorr(tranches["aaa"])
+f0 = freq_fondamentale(ac_a, fe_chat)
+print(f"Fréquence fondamentale estimée : {f0:.1f} Hz")
+
+
+

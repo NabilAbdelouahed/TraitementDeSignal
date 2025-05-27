@@ -13,4 +13,6 @@
 \contentsline {subsection}{\numberline {2.1}Exemple de calcul théorique}{5}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Programmation}{5}{subsection.2.2}%
 \contentsline {subsection}{\numberline {2.3}Application à la classification de quelques signaux simples}{6}{subsection.2.3}%
-\contentsline {subsection}{\numberline {2.4}Classification de signaux de parole voisés ou non voisés}{8}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.4}Classification de signaux de parole voisés ou non voisés}{10}{subsection.2.4}%
+\contentsline {section}{\numberline {3}Partie 3: Aspects fréquentiels}{11}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Echantillonnage}{11}{subsection.3.1}%
