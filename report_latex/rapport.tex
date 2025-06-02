@@ -394,3 +394,74 @@ On vois que pour les deux premiers cas, le signal échantillonné est fidèle à
 \end{figure}
 
 \subsection{La Transformée de Fourier discrète (TFD)}
+
+Nous avons implémenté une fonction en \texttt{Python} permettant de calculer et tracer la densité spectrale d’énergie d’un signal extrait d’un fichier \texttt{.wav}. La fonction lit le fichier audio, extrait une tranche du signal à partir d’un indice donné, applique une fenêtre de Hanning pour atténuer les effets de bord, puis calcule la transformée de Fourier rapide (\texttt{FFT}) sur $2^n$ points. La densité spectrale est obtenue en prenant le module au carré des coefficients de la FFT (représentant l’énergie en fréquence), normalisée et convertie en décibels (dB) selon la formule :
+\[
+P_{\mathrm{dB}}(f) = 10 \log_{10} \left( \frac{|\mathrm{FFT}(f)|^2}{\max(|\mathrm{FFT}(f)|^2)} + \varepsilon \right),
+\] \\
+
+avec $\varepsilon$ un terme petit ($10^{-12}$) pour éviter les problèmes numériques liés au logarithme de zéro.\\
+
+La courbe obtenue est symétrique par rapport à l’axe des fréquences, car la FFT calcule les coefficients complexes pour les fréquences positives et négatives. On ne garde que la moitié positive du spectre.\\
+
+Le choix de $2^n$ (taille de la FFT) influence la **résolution fréquentielle**. Plus $n$ est grand, plus les fréquences sont discrétisées finement, ce qui permet de mieux isoler les pics correspondant aux composantes harmoniques du signal.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=17cm]{screenshots/fft_detection_f0.png}
+    \caption{FFT}
+\end{figure}
+
+
+Sur le spectre obtenu, on observe une structure en pics caractéristiques d’un signal périodique voisé (ici le phonème \textit{aaa}). La fréquence fondamentale correspond au premier pic significatif au-dessus du bruit. À partir du spectre, nous détectons une fréquence fondamentale de \textbf{117{,}2 Hz}.\\
+
+Ce résultat est très proche de celui obtenu par l’autocorrélation dans le domaine temporel, où nous avions trouvé une fréquence de \textbf{120{,}3 Hz} (3.1 Hz de différence). Cette légère différence peut s’expliquer par :
+\begin{itemize}
+    \item la résolution fréquentielle limitée de la FFT (dépendante de la taille de la tranche),
+    \item les effets de la fenêtre de Hanning qui modifie légèrement le contenu fréquentiel,
+    \item et les arrondis ou approximations dans la localisation du pic.
+\end{itemize}
+Malgré cela, les deux méthodes convergent vers une estimation très cohérente de la fréquence fondamentale, typique d’une voix d’homme (comprise entre 85 et 180 Hz).\\
+
+Le \emph{zero-padding} consiste à compléter un signal par des zéros à la fin. Cette opération n’ajoute aucune nouvelle information, mais elle permet d’augmenter artificiellement la longueur du signal, ce qui améliore la **résolution fréquentielle** du spectre après transformation de Fourier.
+
+Nous avons implémenté une fonction \texttt{zero\_padding} en \texttt{Python}, prenant en entrée le signal initial et le nombre de zéros à ajouter, et renvoyant le signal étendu.
+
+\begin{lstlisting}[language=Python]
+    def zero_padding(signal, nb_zeros):
+    return np.hstack((signal, np.zeros(nb_zeros)))
+\end{lstlisting}
+
+Nous avons ensuite comparé les densités spectrales d’énergie (obtenues par FFT) avant et après zero-padding.
+
+Le résultat montre que :
+\begin{itemize}
+  \item les **positions des pics** dans le spectre restent inchangées (le contenu fréquentiel est le même),
+  \item mais les courbes sont **plus lisses** comme on peut le voir dans la figure \ref{fig:fft_zero_padding_zoom} et les pics **mieux localisés** après padding, ce qui facilite l’estimation des fréquences fondamentales,
+  \item le zero-padding agit donc comme une **interpolation en fréquence**.
+\end{itemize}
+
+Cela est particulièrement utile pour distinguer des pics proches ou évaluer plus précisément une fréquence fondamentale.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=17cm]{screenshots/fft_avec_zero_padding.png}
+    \caption{FFT avec et sans zero-padding}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=17cm]{screenshots/fft_avec_zero_padding_zoom.png}
+    \caption{FFT avec et sans zero-padding (zoom)}
+    \label{fig:fft_zero_padding_zoom}
+\end{figure}
+
+\newpage
+On peut faire directement du zero-padding dans la fonction \textbf{np.fft.fft(x, n)}.
+
+\begin{itemize}
+    \item Si \( n \) est supérieur à la longueur de \( x \), la fonction ajoute des zéros à la fin de \( x \) jusqu'à atteindre la longueur \( n \).
+    \item Si \( n \) est inférieur ou égal à la longueur de \( x \), la fonction tronque \( x \) à la longueur \( n \).
+\end{itemize}
+
+\subsection{Changement de fréquence d’échantillonnage}

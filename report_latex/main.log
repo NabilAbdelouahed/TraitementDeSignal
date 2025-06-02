@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  2 JUN 2025 18:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  2 JUN 2025 19:39
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1178,7 +1178,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `main.toc'.
 
  (./rapport.tex [0]
-<screenshots/signal_echantillone.png, id=114, 722.7pt x 289.08pt>
+<screenshots/signal_echantillone.png, id=119, 722.7pt x 289.08pt>
 File: screenshots/signal_echantillone.png Graphic file (type png)
 <use screenshots/signal_echantillone.png>
 Package pdftex.def Info: screenshots/signal_echantillone.png  used on input line 19.
@@ -1193,17 +1193,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-<screenshots/puissance_et_energie.png, id=130, 563.10374pt x 143.53625pt>
+<screenshots/puissance_et_energie.png, id=135, 563.10374pt x 143.53625pt>
 File: screenshots/puissance_et_energie.png Graphic file (type png)
 <use screenshots/puissance_et_energie.png>
 Package pdftex.def Info: screenshots/puissance_et_energie.png  used on input line 83.
 (pdftex.def)             Requested size: 426.79134pt x 108.7908pt.
-<screenshots/quantification_graph.png, id=131, 867.24pt x 433.62pt>
+<screenshots/quantification_graph.png, id=136, 867.24pt x 433.62pt>
 File: screenshots/quantification_graph.png Graphic file (type png)
 <use screenshots/quantification_graph.png>
 Package pdftex.def Info: screenshots/quantification_graph.png  used on input line 91.
 (pdftex.def)             Requested size: 441.01772pt x 220.50809pt.
-<screenshots/quantification_graph_zoomed.png, id=132, 867.24pt x 433.62pt>
+<screenshots/quantification_graph_zoomed.png, id=137, 867.24pt x 433.62pt>
 File: screenshots/quantification_graph_zoomed.png Graphic file (type png)
 <use screenshots/quantification_graph_zoomed.png>
 Package pdftex.def Info: screenshots/quantification_graph_zoomed.png  used on input line 99.
@@ -1217,18 +1217,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
  []
 
 [2 <./screenshots/puissance_et_energie.png> <./screenshots/quantification_graph.png>]
-<screenshots/snr_quantification.png, id=142, 448.67625pt x 90.3375pt>
+<screenshots/snr_quantification.png, id=147, 448.67625pt x 90.3375pt>
 File: screenshots/snr_quantification.png Graphic file (type png)
 <use screenshots/snr_quantification.png>
 Package pdftex.def Info: screenshots/snr_quantification.png  used on input line 113.
 (pdftex.def)             Requested size: 448.67516pt x 90.33727pt.
  [3 <./screenshots/quantification_graph_zoomed.png> <./screenshots/snr_quantification.png>]
-<screenshots/signal_enregistré.png, id=155, 462.528pt x 346.896pt>
+<screenshots/signal_enregistré.png, id=160, 462.528pt x 346.896pt>
 File: screenshots/signal_enregistré.png Graphic file (type png)
 <use screenshots/signal_enregistré.png>
 Package pdftex.def Info: screenshots/signal_enregistré.png  used on input line 154.
 (pdftex.def)             Requested size: 284.52756pt x 213.40593pt.
-<screenshots/mot1_graphe.png, id=156, 462.528pt x 346.896pt>
+<screenshots/mot1_graphe.png, id=161, 462.528pt x 346.896pt>
 File: screenshots/mot1_graphe.png Graphic file (type png)
 <use screenshots/mot1_graphe.png>
 Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 163.
@@ -1238,7 +1238,7 @@ Overfull \hbox (38.41269pt too wide) in paragraph at lines 163--164
  [][] 
  []
 
-<screenshots/mot2_graphe.png, id=157, 462.528pt x 346.896pt>
+<screenshots/mot2_graphe.png, id=162, 462.528pt x 346.896pt>
 File: screenshots/mot2_graphe.png Graphic file (type png)
 <use screenshots/mot2_graphe.png>
 Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 169.
@@ -1253,7 +1253,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 23
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-<screenshots/ecart_autocorrelation.png, id=167, 722.7pt x 289.08pt>
+<screenshots/ecart_autocorrelation.png, id=172, 722.7pt x 289.08pt>
 File: screenshots/ecart_autocorrelation.png Graphic file (type png)
 <use screenshots/ecart_autocorrelation.png>
 Package pdftex.def Info: screenshots/ecart_autocorrelation.png  used on input line 253.
@@ -1268,18 +1268,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
-<screenshots/valeur_rapport.png, id=187, 557.08125pt x 149.55875pt>
+<screenshots/valeur_rapport.png, id=192, 557.08125pt x 149.55875pt>
 File: screenshots/valeur_rapport.png Graphic file (type png)
 <use screenshots/valeur_rapport.png>
 Package pdftex.def Info: screenshots/valeur_rapport.png  used on input line 266.
 (pdftex.def)             Requested size: 426.79134pt x 114.58322pt.
 [6 <./screenshots/ecart_autocorrelation.png> <./screenshots/valeur_rapport.png>]
-<screenshots/generation_signaux.png, id=196, 867.24pt x 578.16pt>
+<screenshots/generation_signaux.png, id=201, 867.24pt x 578.16pt>
 File: screenshots/generation_signaux.png Graphic file (type png)
 <use screenshots/generation_signaux.png>
 Package pdftex.def Info: screenshots/generation_signaux.png  used on input line 299.
 (pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
-<screenshots/generation_signaux_zoom.png, id=197, 867.24pt x 578.16pt>
+<screenshots/generation_signaux_zoom.png, id=202, 867.24pt x 578.16pt>
 File: screenshots/generation_signaux_zoom.png Graphic file (type png)
 <use screenshots/generation_signaux_zoom.png>
 Package pdftex.def Info: screenshots/generation_signaux_zoom.png  used on input line 305.
@@ -1303,7 +1303,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
  []
 
-<screenshots/autocorr_signaux_30ms.png, id=225, 867.24pt x 578.16pt>
+<screenshots/autocorr_signaux_30ms.png, id=230, 867.24pt x 578.16pt>
 File: screenshots/autocorr_signaux_30ms.png Graphic file (type png)
 <use screenshots/autocorr_signaux_30ms.png>
 Package pdftex.def Info: screenshots/autocorr_signaux_30ms.png  used on input line 324.
@@ -1311,7 +1311,7 @@ Package pdftex.def Info: screenshots/autocorr_signaux_30ms.png  used on input li
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<screenshots/autocorr_signaux_80ms.png, id=226, 867.24pt x 578.16pt>
+<screenshots/autocorr_signaux_80ms.png, id=231, 867.24pt x 578.16pt>
 File: screenshots/autocorr_signaux_80ms.png Graphic file (type png)
 <use screenshots/autocorr_signaux_80ms.png>
 Package pdftex.def Info: screenshots/autocorr_signaux_80ms.png  used on input line 330.
@@ -1324,7 +1324,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: Text page 9 contains only floats.
 
 [9 <./screenshots/autocorr_signaux_30ms.png> <./screenshots/autocorr_signaux_80ms.png>]
-<screenshots/autocorrelation_chat_2.png, id=241, 867.24pt x 289.08pt>
+<screenshots/autocorrelation_chat_2.png, id=246, 867.24pt x 289.08pt>
 File: screenshots/autocorrelation_chat_2.png Graphic file (type png)
 <use screenshots/autocorrelation_chat_2.png>
 Package pdftex.def Info: screenshots/autocorrelation_chat_2.png  used on input line 346.
@@ -1345,32 +1345,79 @@ Underfull \hbox (badness 10000) in paragraph at lines 353--355
  []
 
 [10 <./screenshots/autocorrelation_chat_2.png>]
-<screenshots/echantillonage_partie3.png, id=250, 1084.05pt x 578.16pt>
+<screenshots/echantillonage_partie3.png, id=255, 1084.05pt x 578.16pt>
 File: screenshots/echantillonage_partie3.png Graphic file (type png)
 <use screenshots/echantillonage_partie3.png>
 Package pdftex.def Info: screenshots/echantillonage_partie3.png  used on input line 392.
 (pdftex.def)             Requested size: 483.69684pt x 257.97292pt.
-) [11 <./screenshots/echantillonage_partie3.png>] (./main.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 401--402
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 403--404
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 405--406
+
+ []
+
+[11 <./screenshots/echantillonage_partie3.png>]
+<screenshots/fft_detection_f0.png, id=263, 722.7pt x 289.08pt>
+File: screenshots/fft_detection_f0.png Graphic file (type png)
+<use screenshots/fft_detection_f0.png>
+Package pdftex.def Info: screenshots/fft_detection_f0.png  used on input line 411.
+(pdftex.def)             Requested size: 483.69684pt x 193.47968pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--417
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 424--425
+
+ []
+
+<screenshots/fft_avec_zero_padding.png, id=265, 867.24pt x 289.08pt>
+File: screenshots/fft_avec_zero_padding.png Graphic file (type png)
+<use screenshots/fft_avec_zero_padding.png>
+Package pdftex.def Info: screenshots/fft_avec_zero_padding.png  used on input line 448.
+(pdftex.def)             Requested size: 483.69684pt x 161.23528pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<screenshots/fft_avec_zero_padding_zoom.png, id=266, 867.24pt x 289.08pt>
+File: screenshots/fft_avec_zero_padding_zoom.png Graphic file (type png)
+<use screenshots/fft_avec_zero_padding_zoom.png>
+Package pdftex.def Info: screenshots/fft_avec_zero_padding_zoom.png  used on input line 454.
+(pdftex.def)             Requested size: 483.69684pt x 161.23528pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[12 <./screenshots/fft_detection_f0.png>]) [13 <./screenshots/fft_avec_zero_padding.png> <./screenshots/fft_avec_zero_padding_zoom.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: EA09C79C8B442AE6BBEE69E6E5F70B75;3963.
+(rerunfilecheck)             Checksum: DD7AC1F2E3E76560C58E254F44CF5E59;4244.
  ) 
 Here is how much of TeX's memory you used:
- 27540 strings out of 476182
- 498411 string characters out of 5795595
+ 27576 strings out of 476182
+ 499547 string characters out of 5795595
  2122975 words of memory out of 5000000
- 48983 multiletter control sequences out of 15000+600000
+ 49010 multiletter control sequences out of 15000+600000
  574054 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,8n,101p,720b,1341s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 99i,8n,101p,721b,1341s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (13 pages, 1469195 bytes).
+Output written on main.pdf (15 pages, 1667712 bytes).
 PDF statistics:
- 723 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 237 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 777 PDF objects out of 1000 (max. 8388607)
+ 316 compressed objects within 4 object streams
+ 87 named destinations out of 1000 (max. 500000)
+ 260 words of extra memory for PDF output out of 10000 (max. 10000000)
 
