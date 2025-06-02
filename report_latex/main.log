@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  2 JUN 2025 16:03
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  2 JUN 2025 18:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1339,25 +1339,18 @@ Overfull \hbox (19.29507pt too wide) in paragraph at lines 353--355
 []\T1/cmr/m/n/10 Pour iden-ti-fier les pics sec-ondaires dans l'autocorrélation, nous util-isons la fonc-tion [][]\T1/cmtt/m/n/10 find_peaks []\T1/cmr/m/n/10 de \T1/cmtt/m/n/10 scipy.signal\T1/cmr/m/n/10 .
  []
 
-<screenshots/autocorrelation_avec_pics_detectes.png, id=242, 462.528pt x 346.896pt>
-File: screenshots/autocorrelation_avec_pics_detectes.png Graphic file (type png)
-<use screenshots/autocorrelation_avec_pics_detectes.png>
-Package pdftex.def Info: screenshots/autocorrelation_avec_pics_detectes.png  used on input line 383.
-(pdftex.def)             Requested size: 483.69684pt x 362.79062pt.
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 353--355
+
+ []
 
 [10 <./screenshots/autocorrelation_chat_2.png>]
-<screenshots/echantillonage_partie3.png, id=253, 1084.05pt x 578.16pt>
+<screenshots/echantillonage_partie3.png, id=250, 1084.05pt x 578.16pt>
 File: screenshots/echantillonage_partie3.png Graphic file (type png)
 <use screenshots/echantillonage_partie3.png>
-Package pdftex.def Info: screenshots/echantillonage_partie3.png  used on input line 408.
+Package pdftex.def Info: screenshots/echantillonage_partie3.png  used on input line 392.
 (pdftex.def)             Requested size: 483.69684pt x 257.97292pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-) [11 <./screenshots/autocorrelation_avec_pics_detectes.png>] [12 <./screenshots/echantillonage_partie3.png>] (./main.aux)
+) [11 <./screenshots/echantillonage_partie3.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -1366,18 +1359,18 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: EA09C79C8B442AE6BBEE69E6E5F70B75;3963.
  ) 
 Here is how much of TeX's memory you used:
- 27557 strings out of 476182
- 498922 string characters out of 5795595
+ 27540 strings out of 476182
+ 498411 string characters out of 5795595
  2122975 words of memory out of 5000000
- 48996 multiletter control sequences out of 15000+600000
+ 48983 multiletter control sequences out of 15000+600000
  574054 words of font info for 66 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  99i,8n,101p,720b,1341s stack positions out of 10000i,1000n,20000p,200000b,200000s
  </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (14 pages, 1515563 bytes).
+Output written on main.pdf (13 pages, 1469195 bytes).
 PDF statistics:
- 737 PDF objects out of 1000 (max. 8388607)
- 303 compressed objects within 4 object streams
- 82 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 723 PDF objects out of 1000 (max. 8388607)
+ 296 compressed objects within 3 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 237 words of extra memory for PDF output out of 10000 (max. 10000000)
 

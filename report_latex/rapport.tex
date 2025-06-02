@@ -351,39 +351,23 @@ Le signal est découpé en tranches de 30 ms pour analyser leur autocorrélation
 L’autocorrélation permets d'estimer la fréquence fondamentale \(f_0\) d’un signal voisé. On s’attend à ce qu’un signal périodique présente un maximum secondaire au retard correspondant à sa période fondamentale \(T_0 = \frac{1}{f_0}\).\\
 
 Pour identifier les pics secondaires dans l’autocorrélation, nous utilisons la fonction \verb|find_peaks| de \texttt{scipy.signal}.
-Afin d’éviter de détecter des pics non significatifs dus au bruit ou à des résonances (formants), deux paramètres doivent être soigneusement choisis :
-
-\begin{itemize}
-    \item \textbf{distance minimale} entre les pics, choisie pour rejeter les pics trop proches de \(t = 0\), qui ne peuvent pas correspondre à une fréquence fondamentale réaliste. On impose donc une période fondamentale minimale correspondant à une fréquence maximale plausible pour la voix humaine, généralement estimée à environ 400 Hz. Cela conduit à une période minimale d’une voix humaine raisonnable \(T_{0,\min} = \frac{1}{f_{0,\max}} = \frac{1}{400\,\mathrm{Hz}} \Rightarrow \text{distance} = \frac{f_e}{f_{0,\max}} \approx 40\) échantillons.
-    \item \textbf{hauteur minimale} des pics : après normalisation de l’autocorrélation (valeur maximale = 1), on impose que seuls les pics avec une amplitude supérieure à 0{,}1 soient retenus, pour éviter de détecter du bruit.
-\end{itemize}
-
-On utilise donc: 
-
-\begin{lstlisting}[language=python]
-    peaks, _ = find_peaks(ac, height=0.05, distance=40)
-\end{lstlisting}
+Afin d’éviter de détecter des pics non significatifs dus au bruit ou à des résonances (formants), le paramètre \textbf{height} qui correspond à la hauteur minimale doit être soigneusement choisis pour ignorer les pics trop faibles dus au bruit. Nous avons fixé ce seuil à 0{,}3 après normalisation.\\
 
 Pour la tranche correspondant à la voyelle \textit{« a »} dans l’enregistrement (partie voisée), nous obtenons après traitement:
 
 \begin{itemize}
-    \item Indices des 4 premiers pics détectés : \([5,\ 59,\ 119,\ 199]\)
-    \item Le premier pic au-delà de 40 échantillons est à \(\text{lag} = 59\)
+    \item Indices du premier pic détecté : 133
     \item On en déduit une fréquence fondamentale :
     \[
-    f_0 = \frac{f_e}{\text{lag}} = \frac{16\,000}{59} \approx 271{,}2\ \mathrm{Hz}
+    f_0 = \frac{f_e}{\text{lag}} = \frac{16\,000}{133} \approx 120{,}3\ \mathrm{Hz}
     \]
 \end{itemize}
 
-Sachant que l'enregistrement a été réalisé par un homme, on s’attend normalement à une fréquence fondamentale située entre 85 et 180 Hz. La valeur mesurée de 271 Hz est donc relativement élevée, ce qui peut s’expliquer par une voyelle très accentuée, un enregistrement particulier ou une éventuelle confusion dans la détection du pic de l’autocorrélation.
-Mais cette valeur reste plausible pour une voix humaine adulte et correspond à une vibration régulière des cordes vocales.
+Ce résultat est conforme aux plages typiques pour une voix masculine (85–180 Hz). 
+Il est important de noter que la fréquence fondamentale ne caractérise pas la voyelle elle-même, mais le locuteur.
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=17cm]{screenshots/autocorrelation_avec_pics_detectes.png}
-    \caption{Autocorrélation de la tranche analysée avec les pics détectés.}
-\end{figure}
 
+\newpage
 \section{Partie 3: Aspects fréquentiels}
 \subsection{Echantillonnage}
 

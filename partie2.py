@@ -181,15 +181,15 @@ def extract_tranche(signal, fe, start_ms, duration_ms):
 
 # Exemple : analyser 3 tranches
 tranches = {
-    "chhh": extract_tranche(chat, fe, 1000, 30),
-    "transition": extract_tranche(chat, fe, 1400, 30),
-    "aaa": extract_tranche(chat, fe, 1600, 30),
+    "chhh": extract_tranche(chat, fe_chat, 700, 30),
+    "aaa": extract_tranche(chat, fe_chat, 2100, 30),
 }
+
 
 plt.figure(figsize=(12, 4))
 for i, (label, tranche) in enumerate(tranches.items()):
     ac = autocorr_sig(tranche)
-    plt.subplot(1, 3, i+1)
+    plt.subplot(1, 2, i+1)
     plt.plot(ac)
     plt.title(f"Autocorrélation - {label}")
     plt.grid(True)
@@ -199,7 +199,7 @@ plt.show()
 
 
 def freq_fondamentale(ac, fe):
-    peaks, _ = find_peaks(ac, height=0.05, distance=40)
+    peaks, _ = find_peaks(ac, height=0.3)
     plt.plot(ac_a)
     plt.plot(peaks, ac_a[peaks], "x")
     plt.title("Autocorrélation de 'aaa' avec pics détectés")
@@ -207,7 +207,8 @@ def freq_fondamentale(ac, fe):
     plt.show()
     if len(peaks) > 1:
         print(f"Pics détectés : {peaks[:4]}")
-        delay = peaks[1]
+        delay = peaks[0]
+        print(f"Premier délai : {delay} échantillons")
         print(delay)
         return fe / delay
     return None

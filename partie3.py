@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.io import wavfile
 
 #Q3.1
 
@@ -62,3 +63,40 @@ plt.show()
 
 #Q3.2
 
+
+def tracer_spectre_wav(nom_fichier, taille_tranche, indice_debut):
+    # Lire le fichier .wav
+    fe, signal = wavfile.read(nom_fichier)
+    
+    # Si signal stéréo, prendre un seul canal
+    if signal.ndim > 1:
+        signal = signal[:, 0]
+    
+    # Extraire la tranche
+    tranche = signal[indice_debut : indice_debut + taille_tranche]
+    
+    # Appliquer une fenêtre de Hanning pour réduire les effets de bord
+    fenetre = np.hanning(len(tranche))
+    tranche_fen = tranche * fenetre
+
+    # Calcul FFT
+    N = len(tranche_fen)
+    fft_result = np.fft.fft(tranche_fen)
+    fft_freqs = np.fft.fftfreq(N, d=1/fe)
+
+    # Densité spectrale d'énergie (module au carré normalisé)
+    spectre = np.abs(fft_result[:N//2]) ** 2
+    spectre_db = 10 * np.log10(spectre / np.max(spectre) + 1e-12)  # éviter log(0)
+    freqs_pos = fft_freqs[:N//2]
+
+    # Affichage
+    plt.figure(figsize=(10, 4))
+    plt.plot(freqs_pos, spectre_db)
+    plt.title("Densité spectrale d’énergie")
+    plt.xlabel("Fréquence (Hz)")
+    plt.ylabel("Amplitude (dB)")
+    plt.grid(True)
+    plt.tight_layout()
+    plt.show()
+
+tracer_spectre_wav("chat_resample.wav", taille_tranche=1024, indice_debut=8000)
