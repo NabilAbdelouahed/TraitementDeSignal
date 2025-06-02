@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748382932.18531 "/home/deappool/Desktop/td1_TS/report_latex/main.tex" "main.pdf" "main" 1748382936.43939 0
+["pdflatex"] 1748873020.86779 "/home/deappool/Desktop/td1_TS/report_latex/main.tex" "main.pdf" "main" 1748873025.04339 0
   "/etc/texmf/web2c/texmf.cnf" 1747213474.30734 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk" 1747228883.09601 25396 98c969c7a3f2dda5e24c694e3dba7ebc ""
   "/home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1747228883.935 31928 9c3ec00a6888e3b4ee4e6b9bfeaeb974 ""
@@ -222,16 +222,17 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747214407.61874 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747214465 6800797 541359d380416f2bd8292dc1f3dfbb0c ""
-  "main.aux" 1748382936.06606 5233 7378c319ca6c7a1a177bb5610e78a584 "pdflatex"
-  "main.out" 1748382936.06806 3678 bc871d1c9215cab4720625a580e740de "pdflatex"
+  "main.aux" 1748873024.66763 5529 bbbefed691567869b0d16bd2816c1149 "pdflatex"
+  "main.out" 1748873024.66963 3963 ea09c79c8b442ae6bbee69e6e5f70b75 "pdflatex"
   "main.tex" 1748371830.72854 2549 f752299557c64f42c9958aea77a51ae1 ""
-  "main.toc" 1748382936.06906 1705 53761d419e2db4e37c7f98cca9e8b4c6 "pdflatex"
-  "rapport.tex" 1748382928.396 16264 9d7c85b68362c6592fd387c8f5c45a0d ""
+  "main.toc" 1748873024.67063 1814 ad2ec68d38a6f9e8ca3d48efc6ad21ac "pdflatex"
+  "rapport.tex" 1748873016.08762 17494 05fda90e88efa641fd880adb0865d99f ""
   "screenshots/autocorr_signaux_30ms.png" 1748374504.64359 134448 887826c328c487c96429819a481ad2eb ""
   "screenshots/autocorr_signaux_80ms.png" 1748374603.58929 168326 d133f9e4a1619a532fd48eeb77f1a12c ""
   "screenshots/autocorrelation_avec_pics_detectes.png" 1748381652.96163 47798 1bd56daa18aeae691a3e21b191029567 ""
   "screenshots/autocorrelation_chat_2.png" 1748379768.88788 67432 6b00f2af9e9f9f075f7b13256ba8cb59 ""
   "screenshots/ecart_autocorrelation.png" 1748355919.6007 126266 a98feb598f13103aa98a0f1b0590de96 ""
+  "screenshots/echantillonage_partie3.png" 1748872443.46533 163614 cd14271a120bb60cf84afd9dd3a4a4ac ""
   "screenshots/generation_signaux.png" 1748372145.39742 187466 d71c4cf1ec83c6a91c741b4f6f8b5b9d ""
   "screenshots/generation_signaux_zoom.png" 1748372186.82215 172402 8aeec59f5f7c77835dc4bd15aa199a37 ""
   "screenshots/mot1_graphe.png" 1747836993.82134 32879 f7da5939f84670c5d150e1fdefee4d5f ""

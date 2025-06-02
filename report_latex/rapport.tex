@@ -387,3 +387,26 @@ Mais cette valeur reste plausible pour une voix humaine adulte et correspond à 
 \section{Partie 3: Aspects fréquentiels}
 \subsection{Echantillonnage}
 
+
+Le théorème de Nyquist-Shannon stipule qu’un signal bande limitée, dont la fréquence maximale est $f_0$, peut être parfaitement reconstruit à partir de ses échantillons si la fréquence d’échantillonnage vérifie :
+\[
+f_e > 2 f_0
+\]
+La fréquence $f_e = 2 f_0$ est appelée \textbf{fréquence de Nyquist} et constitue la limite minimale pour éviter le phénomène de repliement spectral (\textit{aliasing}).
+
+On échantillone donc le signal selon trois cas distincts :
+
+\begin{itemize}
+    \item \textbf{Cas 1 :} $f_e = 2f_0$ (fréquence de Nyquist),
+    \item \textbf{Cas 2 :} $f_e = 5f_0$ (fréquence supérieure),
+    \item \textbf{Cas 3 :} $f_e = 0{,}8f_0$ (fréquence inférieure).
+\end{itemize}
+
+On vois que pour les deux premiers cas, le signal échantillonné est fidèle à la forme du signal d’origine. En revanche, pour le troisième cas, l’échantillonnage à une fréquence inférieure à la fréquence de Nyquist entraîne un repliement spectral, rendant le signal méconnaissable.
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=17cm]{screenshots/echantillonage_partie3.png}
+    \caption{Signaux échantillonnés}
+\end{figure}
+
+\subsection{La Transformée de Fourier discrète (TFD)}

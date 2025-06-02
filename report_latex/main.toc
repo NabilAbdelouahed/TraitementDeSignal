@@ -16,3 +16,4 @@
 \contentsline {subsection}{\numberline {2.4}Classification de signaux de parole voisés ou non voisés}{10}{subsection.2.4}%
 \contentsline {section}{\numberline {3}Partie 3: Aspects fréquentiels}{11}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Echantillonnage}{11}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}La Transformée de Fourier discrète (TFD)}{11}{subsection.3.2}%
