@@ -465,3 +465,141 @@ On peut faire directement du zero-padding dans la fonction \textbf{np.fft.fft(x,
 \end{itemize}
 
 \subsection{Changement de fréquence d’échantillonnage}
+
+Il est essentiel de bien distinguer deux opérations proches mais conceptuellement différentes :
+
+\begin{itemize}
+    \item \textbf{Changer la cadence (changer la vitesse de lecture)} consiste à lire un signal audio plus vite ou plus lentement, sans modifier son contenu en échantillons. Cela revient à modifier la \textit{fréquence d’échantillonnage effective} sans changer les données elles-mêmes. Par exemple :
+    \begin{itemize}
+        \item Lire un signal échantillonné à 44{,}100 Hz comme s’il était à 22{,}050 Hz revient à le lire deux fois plus lentement (et donc plus grave).
+        \item Inversement, le lire à 88{,}200 Hz le rend deux fois plus rapide (et plus aigu).
+    \end{itemize}
+
+    \item \textbf{Le rééchantillonnage} (\textit{resampling}) modifie le \textit{nombre total d’échantillons} d’un signal, généralement en interpolant ou décimant les données, pour obtenir un nouveau signal correspondant à une nouvelle fréquence d’échantillonnage, mais sans changer la vitesse de lecture. Cela permet de :
+\end{itemize}
+
+Et donc Pour :
+
+\begin{itemize}
+    \item \textbf{Réduction de cadence (ralentissement)} : on insère des échantillons ou on répète les échantillons existants. Cela allonge la durée du signal et rend la voix plus grave.
+    \item \textbf{Augmentation de cadence (accélération)} : on sous-échantillonne le signal, par exemple en prenant un échantillon sur deux, ce qui réduit la durée et rend la voix plus aiguë.
+\end{itemize}
+
+Dans les deux cas, si l’on garde la même fréquence d’échantillonnage $f_e$, alors la durée du signal est directement modifiée.\\
+
+Le facteur $n$ de changement de cadence détermine le degré de ralentissement ou d’accélération :
+
+\begin{itemize}
+    \item Si $n > 1$, on applique un ralentissement. Le signal devient plus lent, plus long et plus grave.
+    \item Si $n < 1$ (ou bien $n = 1/k$ avec $k > 1$), on accélère le signal. Il devient plus court et plus aigu.
+\end{itemize}
+
+Par exemple :
+\begin{itemize}
+    \item Pour $n = 2$, chaque échantillon est répété deux fois $\Rightarrow$ la durée est doublée.
+    \item Pour $n = 1/3$ ($k = 3$), on garde un échantillon sur trois $\Rightarrow$ la durée est divisée par 3.
+\end{itemize}
+
+On utilise le code suivant :
+
+\begin{lstlisting}[language=python]
+    def reduce_cadence(filename, tranche_size, start_index, factor, out_filename):
+    """
+    Accelere le signal d'un facteur <factor> :
+    - On prend 1 echantillon sur factor (decimation).
+    - On conserve fs identique (donc la duree est divisee par factor).
+    """
+    # Lecture du wav
+    fs, signal = wavfile.read(filename)
+    # On extrait la tranche demandee
+    tranche = signal[start_index:start_index + tranche_size]
+    # On decime : on prend un echantillon sur 'factor'
+    reduced = tranche[::factor]
+    # On garde la meme frequence d'echantillonnage
+    new_fs = fs
+    # On ecrit le resultat
+    wavfile.write(out_filename, new_fs, reduced.astype(np.int16))
+    return reduced, new_fs
+
+
+def increase_cadence(filename, tranche_size, start_index, factor, out_filename):
+    """
+    Ralentit le signal d'un facteur `factor` :
+    - On repete chaque echantillon `factor` fois (np.repeat).
+    - On conserve fs identique (donc la duree est multipliee par factor).
+    """
+    # Lecture du wav
+    fs, signal = wavfile.read(filename)
+    # On extrait la tranche demandee
+    tranche = signal[start_index:start_index + tranche_size]
+    # On repete chaque echantillon factor fois
+    upsampled = np.repeat(tranche, factor)
+    # On garde la meme frequence d'echantillonnage
+    new_fs = fs
+    # On ecrit le resultat
+    wavfile.write(out_filename, new_fs, upsampled.astype(np.int16))
+    return upsampled, new_fs
+
+
+def generate_cadence_variations(filename, tranche_size, start_index):
+    """
+    Genere plusieurs fichiers .wav acceleres (x2, x3, x4) et ralentis (%2, %3, %4)
+    dans le dossier 'outputs_cadence/'. Pour chaque facteur f :
+      - accelere : fichier "faster_x{f}.wav"
+      - ralenti  : fichier "slower_x{f}.wav"
+    """
+    acceleration_factors = [2, 3, 4, 5, 6]  # 2x, 3x, 4x plus rapides
+    slowing_factors      = [2, 3, 4, 5, 6]  # %2, %3, %4 plus lents
+
+    for f in acceleration_factors:
+        out_file = f"outputs_cadence/faster_x{f}.wav"
+        reduce_cadence(filename, tranche_size, start_index, f, out_file)
+        print(f"Fichier genere : {out_file} (accelere x{f})")
+
+    for f in slowing_factors:
+        out_file = f"outputs_cadence/slower_x{f}.wav"
+        increase_cadence(filename, tranche_size, start_index, f, out_file)
+        print(f"Fichier genere : {out_file} (ralenti %{f})")
+
+generate_cadence_variations(filename= "audio-sig.wav", tranche_size= 25600, start_index = 500)
+\end{lstlisting}
+Lorsque le facteur de modification est trop important, le signal devient difficilement intelligible :
+
+\begin{itemize}
+    \item \textbf{Trop accéléré ($n \gg 1$)} : la durée est trop courte, les mots sont comprimés, et la fréquence fondamentale est augmentée au point que la voix devient méconnaissable.
+    \item \textbf{Trop ralenti ($n \gg 1$ en ralentissement)} : la durée devient très longue, la voix semble traînante, et les syllabes sont déformées voire hachées.
+\end{itemize}
+
+Ainsi, au-delà de certains seuils (par exemple $n >= 3$ ou $n <= 0.33$), il devient difficile, voire impossible, de reconnaître les mots prononcés. Cela est dû au fait que les formants (zones de concentration d’énergie dans le spectre) sont déplacés ou trop étalés pour être perçus correctement.\\
+
+Une augmentation ou réduction naïve de la cadence (comme avec ce code) modifie à la fois le \textit{tempo} et la \textit{hauteur}. Pour conserver uniquement l’un ou l’autre, des techniques plus avancées comme la transformée de Fourier à court terme (STFT) sont utilisées.\\
+
+En traçant la transformée de Fourier des signaux accélérés et ralentis en comparaison avec le signal original, on observe les comportements suivants (Voir figure \ref{fig:cadence_fft}):
+
+\begin{itemize}
+    \item \textbf{Original} : spectre de référence, avec ses pics de formants localisés autour des fréquences caractéristiques de la voix. Ces pics traduisent la présence des voyelles et consonnes, et leur position reflète la structure du signal vocal.
+    
+    \item \textbf{Faster x2, Faster x4} : le spectre est étiré vers les hautes fréquences. Autrement dit, les pics de formants sont décalés vers la droite, ce qui correspond à une montée en hauteur (pitch) — la voix devient plus aiguë. Ce phénomène est dû à la réduction de la durée du signal sans interpolation, ce qui contracte les cycles et augmente leur fréquence apparente.
+
+    \item \textbf{Slower x2, Slower x4} : à l’inverse, le spectre est compressé vers les basses fréquences. Les formants se déplacent vers la gauche, traduisant une voix plus grave. Cette compression résulte de l’introduction de zéros (échantillons nuls) qui allongent artificiellement la période des signaux périodiques.
+
+    \item \textbf{Amplitude} : on observe également une modification de l'amplitude du spectre. Lors de l'accélération, la suppression d’échantillons réduit l’énergie totale, ce qui diminue généralement les amplitudes du spectre. En revanche, lors du ralentissement, l’ajout de zéros augmente la longueur du signal traité par la FFT, ce qui peut amplifier certaines composantes fréquentielles, en particulier à basse fréquence, et conduire à une amplitude spectrale plus élevée.
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=17cm]{screenshots/fft_cadence.png}
+    \caption{FFT cadence modifiée}
+    \label{fig:cadence_fft}
+\end{figure}
+
+Contrairement aux méthodes naïves d’augmentation ou de réduction de cadence par décimation (suppression d’échantillons) ou zéro-padding (ajout de zéros), la fonction \texttt{resample} de SciPy utilise une interpolation efficace basée sur la transformée de Fourier pour reconstruire le signal. Cette approche conserve bien mieux les caractéristiques spectrales du signal, notamment les formants vocaux.
+
+\begin{itemize}
+    \item \textbf{À l’écoute}, les signaux transformés avec \texttt{resample} sont plus fluides, plus naturels, et conservent mieux l’intelligibilité du contenu vocal, même pour des facteurs élevés.
+    \item En comparaison, la premiére méthode introduit des distorsions, un effet robotique ou haché, et altère la hauteur et le timbre de manière plus brutale.
+\end{itemize}
+
+\newpage 
+\subsection{Analyse spectrale}
+\subsubsection{Analyse d’une tranche de signal par TFD}

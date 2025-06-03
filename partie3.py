@@ -170,10 +170,125 @@ def tracer_spectres_compare(nom_fichier, nb_zeros):
     plt.tight_layout()
     plt.show()
 
-freqs, pse = tracer_spectres_compare("aaa.wav", 500)
-
-detecter_fondamentale(freqs, pse)
-
-
 # Q3.3
 
+
+def reduce_cadence(filename, tranche_size, start_index, factor, out_filename):
+    """
+    Accélère le signal d'un facteur `factor` :
+    - On prend 1 échantillon sur `factor` (décimation).
+    - On conserve fs identique (donc la durée est divisée par factor).
+    """
+    # Lecture du wav
+    fs, signal = wavfile.read(filename)
+    # On extrait la tranche demandée
+    tranche = signal[start_index:start_index + tranche_size]
+    # On décime : on prend un échantillon sur 'factor'
+    reduced = tranche[::factor]
+    # On garde la même fréquence d'échantillonnage
+    new_fs = fs
+    # On écrit le résultat
+    wavfile.write(out_filename, new_fs, reduced.astype(np.int16))
+    return reduced, new_fs
+
+
+def increase_cadence(filename, tranche_size, start_index, factor, out_filename):
+    """
+    Ralentit le signal d'un facteur `factor` :
+    - On répète chaque échantillon `factor` fois (np.repeat).
+    - On conserve fs identique (donc la durée est multipliée par factor).
+    """
+    # Lecture du wav
+    fs, signal = wavfile.read(filename)
+    # On extrait la tranche demandée
+    tranche = signal[start_index:start_index + tranche_size]
+    # On répète chaque échantillon factor fois
+    upsampled = np.repeat(tranche, factor)
+    # On garde la même fréquence d'échantillonnage
+    new_fs = fs
+    # On écrit le résultat
+    wavfile.write(out_filename, new_fs, upsampled.astype(np.int16))
+    return upsampled, new_fs
+
+
+def generate_cadence_variations(filename, tranche_size, start_index):
+    """
+    Génère plusieurs fichiers .wav accélérés (x2, x3, x4) et ralentis (÷2, ÷3, ÷4)
+    dans le dossier 'outputs_cadence/'. Pour chaque facteur f :
+      - accéléré : fichier "faster_x{f}.wav"
+      - ralenti  : fichier "slower_x{f}.wav"
+    """
+    acceleration_factors = [2, 3, 4, 5, 6]  # 2x, 3x, 4x plus rapides
+    slowing_factors      = [2, 3, 4, 5, 6]  # ÷2, ÷3, ÷4 plus lents
+
+    for f in acceleration_factors:
+        out_file = f"outputs_cadence/faster_x{f}.wav"
+        reduce_cadence(filename, tranche_size, start_index, f, out_file)
+        print(f"[✔] Fichier généré : {out_file} (accéléré x{f})")
+
+    for f in slowing_factors:
+        out_file = f"outputs_cadence/slower_x{f}.wav"
+        increase_cadence(filename, tranche_size, start_index, f, out_file)
+        print(f"[✔] Fichier généré : {out_file} (ralenti ÷{f})")
+
+
+generate_cadence_variations(filename= "audio-sig.wav", tranche_size= 25600, start_index = 500)
+
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.io import wavfile
+import os
+
+# Dictionnaire des fichiers à comparer
+file_paths = {
+    "Original":            "audio-sig.wav",
+    "Faster x2":           "outputs_cadence/faster_x2.wav",
+    "Faster x4":           "outputs_cadence/faster_x4.wav",
+    "Slower x2":           "outputs_cadence/slower_x2.wav",
+    "Slower x4":           "outputs_cadence/slower_x4.wav"
+}
+
+# Création de la figure avec 5 sous-plots (une rangée de 5 graphiques)
+fig, axs = plt.subplots(5, 1, figsize=(10, 15))
+
+for ax, (label, path) in zip(axs, file_paths.items()):
+    if not os.path.exists(path):
+        # Si le fichier n'existe pas, on l'indique dans le sous-plot
+        ax.text(0.5, 0.5, f"Fichier introuvable :\n{path}", 
+                ha='center', va='center', fontsize=12)
+        ax.set_title(label)
+        ax.set_xticks([])
+        ax.set_yticks([])
+        continue
+
+    # Lecture du fichier .wav
+    fs, signal = wavfile.read(path)
+
+    # Si stéréo, on ne garde que le premier canal
+    if signal.ndim > 1:
+        signal = signal[:, 0]
+
+    # Normalisation (si int16 → on ramène dans [-1,1])
+    if signal.dtype == np.int16:
+        signal = signal / 32768.0
+
+    # Pour la FFT, on prend au maximum 65 536 échantillons (ou moins si le signal est plus court)
+    N = min(65536, len(signal))
+    snippet = signal[:N]
+
+    # Calcul de la FFT et récupération de la moitié des fréquences positives
+    fft_vals = np.fft.fft(snippet)
+    mag     = np.abs(fft_vals)[:N//2]
+    freqs   = np.fft.fftfreq(N, d=1/fs)[:N//2]
+
+    # Tracé du spectre
+    ax.plot(freqs, mag)
+    ax.set_title(label, fontsize=14)
+    ax.set_xlabel("Fréquence (Hz)")
+    ax.xaxis.set_label_coords(0.81, -0.08)  
+    ax.set_ylabel("Amplitude")
+    ax.set_xlim(0, fs/2)
+    ax.grid(True)
+
+plt.tight_layout()
+plt.show()

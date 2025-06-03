@@ -18,3 +18,5 @@
 \contentsline {subsection}{\numberline {3.1}Echantillonnage}{11}{subsection.3.1}%
 \contentsline {subsection}{\numberline {3.2}La Transformée de Fourier discrète (TFD)}{11}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Changement de fréquence d’échantillonnage}{13}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}Analyse spectrale}{16}{subsection.3.4}%
+\contentsline {subsubsection}{\numberline {3.4.1}Analyse d’une tranche de signal par TFD}{16}{subsubsection.3.4.1}%

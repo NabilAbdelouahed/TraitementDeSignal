@@ -467,6 +467,11 @@ INPUT ./screenshots/fft_avec_zero_padding_zoom.png
 INPUT ./screenshots/fft_avec_zero_padding_zoom.png
 INPUT ./screenshots/fft_avec_zero_padding_zoom.png
 INPUT ./screenshots/fft_avec_zero_padding_zoom.png
+INPUT ./screenshots/fft_cadence.png
+INPUT ./screenshots/fft_cadence.png
+INPUT ./screenshots/fft_cadence.png
+INPUT ./screenshots/fft_cadence.png
+INPUT ./screenshots/fft_cadence.png
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out
