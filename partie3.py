@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.io import wavfile
 from scipy.signal import find_peaks
 from scipy.fft import fft, fftfreq, fftshift
-from scipy.signal.windows import hann
+from scipy.signal.windows import hann, hamming, blackman
 #Q3.1
 
 # Paramètres du signal
@@ -296,7 +296,6 @@ plt.show()
 # Q3.4
 # 3.4.1
 
-import numpy as np
 
 def generer_signal(N, fe, f0, f1, A0, A1):
     t = np.arange(N) / fe  # vecteur temps en secondes
@@ -381,3 +380,53 @@ N = 256
 # Génération et analyse
 signal = generer_signal(N, fe, f0, f1, A0, A1)
 analyse_tranche_tfd(signal, fe)
+
+# Q3.4.2
+
+def fenetre(signal, type_fenetre):
+    """Applique une fenêtre donnée au signal."""
+    if type_fenetre == 'hanning':
+        w = hann(len(signal))
+    elif type_fenetre == 'hamming':
+        w = hamming(len(signal))
+    elif type_fenetre == 'blackman':
+        w = blackman(len(signal))
+    else:
+        raise ValueError("Type de fenêtre non reconnu.")
+    
+    return signal * w
+
+def analyser_spectre(subplot, signal, fe, fenetre_type):
+    """Analyse le spectre du signal."""
+    N = len(signal)
+    X = np.abs(np.fft.fft(signal))
+    freqs = np.fft.fftfreq(N, 1/fe)
+    half = slice(0, N//2)
+    
+    subplot.plot(freqs[half], X[half])
+    subplot.set_title("Spectre pondéré par une fenêtre de " + fenetre_type)
+    subplot.grid(True)
+    subplot.set_xlabel("Fréquence (Hz)")
+    subplot.set_ylabel("Amplitude")
+
+# Paramètres du signal
+N = 256     # nombre d'échantillons
+fe = 8000   # fréquence d'échantillonnage (Hz)
+f0 = 995    # fréquence 1 (Hz)
+f1 = 1200   # fréquence 2 (Hz)
+A0 = 1      # amplitude 1
+A1 = 0.01   # amplitude 2
+
+# Génération du signal
+signal = generer_signal(N, fe, f0, f1, A0, A1)
+
+fenetres = ['hanning', 'hamming', 'blackman']
+
+fig, axs = plt.subplots(3, figsize=(8, 12))
+
+for i, fenetre_type in enumerate(fenetres):
+    signal_fenetre = fenetre(signal, fenetre_type)
+    analyser_spectre(axs[i], signal_fenetre, fe, fenetre_type)
+
+plt.tight_layout()
+plt.show()

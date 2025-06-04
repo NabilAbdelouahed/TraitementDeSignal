@@ -680,5 +680,24 @@ La fenêtre de Hanning réduit le leakage spectral (fuites autour des pics), ren
 
 \subsubsection{Effets de quelques fenêtres}
 
+Dans les trois cas on détecte bien les deux fréquences dominantes du signal (995~Hz et 1200~Hz), mais avec des différences notable dans l'amplitude en raison de la différence entre $A_0$ et $A_1$. On remarque également une légére différence sur la forme du pic autour de 995~Hz entre les types des fenêtres appliquées.\\
 
+L'utilisation de la fenêtre de Hanning réduit efficacement les lobes secondaires par rapport à la fenêtre rectangulaire, tout en conservant une bonne résolution en fréquence, ce qui permet de distinguer les deux composantes spectrales. La fenêtre de Hamming offre une réduction encore plus importante des lobes secondaires, mais au prix d’un élargissement du lobe principal, ce qui peut rendre la séparation des deux fréquences plus difficile si elles sont proches. Quant à la fenêtre de Blackman, elle présente les plus faibles lobes secondaires, mais au détriment d’une résolution encore plus réduite. Ainsi, le choix de la fenêtre représente un compromis entre la résolution fréquentielle (finesse de séparation des pics) et la réduction des effets de fuite spectrale (lobes secondaires), particulièrement important ici pour détecter correctement la faible composante à 1200~Hz en présence d’une composante dominante à 995~Hz.
 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=18cm]{screenshots/3_4_2_figures.png}
+    \caption{TFD avec différentes fenêtres}
+\end{figure}
+
+Dans ce cas, on analyse un signal de courte durée, composé de 256 échantillons, contenant deux fréquences proches : $f_0 = 995$~Hz et $f_1 = 1200$~Hz. La résolution fréquentielle théorique, sans zero-padding, est donnée par :
+\[
+\Delta f = \frac{f_e}{N} = \frac{8000}{256} = 31{,}25~\text{Hz}
+\]
+Cela signifie que les fréquences ne peuvent être détectées qu'à des positions multiples de 31,25~Hz (par exemple : 968{,}75~Hz, 1000~Hz, 1031{,}25~Hz, etc.), ce qui est insuffisant pour distinguer précisément les composantes situées à 995~Hz et 1200~Hz.
+
+L'ajout de \textit{zero-padding}, par exemple en prolongeant le signal à 1024 points, n'apporte aucune information supplémentaire sur le contenu fréquentiel réel du signal, mais permet de raffiner la grille fréquentielle. La nouvelle résolution de l'axe fréquentiel devient :
+\[
+\Delta f_{\text{interp}} = \frac{f_e}{1024} = \frac{8000}{1024} = 7{,}8125~\text{Hz}
+\]
+Cette interpolation plus fine permet d’observer les pics spectraux de manière plus précise (autour de 995~Hz et 1200~Hz), même si la capacité à les distinguer — c’est-à-dire la résolution effective — reste inchangée. En résumé, le zero-padding améliore la lecture du spectre (interpolation), mais n'améliore pas la séparation entre fréquences proches (résolution).
