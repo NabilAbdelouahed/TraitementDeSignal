@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1748969322.83842 "/home/deappool/Desktop/td1_TS/report_latex/main.tex" "main.pdf" "main" 1748969327.59274 0
+["pdflatex"] 1749047263.62408 "/home/deappool/Desktop/td1_TS/report_latex/main.tex" "main.pdf" "main" 1749047268.8834 0
   "/etc/texmf/web2c/texmf.cnf" 1747213474.30734 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk" 1747228883.09601 25396 98c969c7a3f2dda5e24c694e3dba7ebc ""
   "/home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1747228883.935 31928 9c3ec00a6888e3b4ee4e6b9bfeaeb974 ""
@@ -222,11 +222,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747214407.61874 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747214465 6800797 541359d380416f2bd8292dc1f3dfbb0c ""
-  "main.aux" 1748969327.29264 6542 c26ea4f590423846f1d1f44a28b2900d "pdflatex"
-  "main.out" 1748969327.29464 4674 edc73a1357fb13735415dcebaabab4a2 "pdflatex"
+  "main.aux" 1749047268.62198 7365 a11c029651ac058906050d06c7603785 "pdflatex"
+  "main.out" 1749047268.62298 4889 a54acb1cf117dde779ab0c7f81f42300 "pdflatex"
   "main.tex" 1748371830.72854 2549 f752299557c64f42c9958aea77a51ae1 ""
-  "main.toc" 1748969327.29564 2128 eb7a041ad3ab5512bb214aedef576e11 "pdflatex"
-  "rapport.tex" 1748969317.41695 29472 566313207fc809a25d5f08cf871132ca ""
+  "main.toc" 1749047268.62398 2233 c59d0822af1a56ea29041f1e895b94f2 "pdflatex"
+  "rapport.tex" 1749047257.68382 33256 52d07716de8fb5da4a770e60f5244ad8 ""
+  "screenshots/TFD_hanning_signal.png" 1749045880.12926 46964 b38bd7b556667bc7258cc067be6bbcea ""
   "screenshots/autocorr_signaux_30ms.png" 1748374504.64359 134448 887826c328c487c96429819a481ad2eb ""
   "screenshots/autocorr_signaux_80ms.png" 1748374603.58929 168326 d133f9e4a1619a532fd48eeb77f1a12c ""
   "screenshots/autocorrelation_chat_2.png" 1748879092.78668 67176 4a94efec176aad50aa6b9f76085bf486 ""
@@ -246,6 +247,9 @@
   "screenshots/signal_echantillone.png" 1747747915.14043 61697 e8af4f0acc0ecbfcc0acf3dde40277e7 ""
   "screenshots/signal_enregistré.png" 1747837044.80165 31096 e51b553e83a17b1224bef23ac9a97609 ""
   "screenshots/snr_quantification.png" 1747821595.56478 10280 d593ba60ff385b8ad967ad1197c9414d ""
+  "screenshots/somme_2_cos.png" 1749044360.26042 240489 a2928ac56209ec3b502b873543bcca59 ""
+  "screenshots/triangle_hanning.png" 1749044393.30255 73720 2533db5b4606754ecea4d1f6659eff7a ""
+  "screenshots/triangle_hanning_1000.png" 1749044472.62345 52109 f544133ba3e23a52f96abdc3c71d0e55 ""
   "screenshots/valeur_rapport.png" 1748358000.13413 43655 ba5675034d870eb401e352e758ec1f2f ""
   "title.tex" 1747747353.31354 768 e24bfb2ce5944a65830065f48810ffcf ""
   (generated)

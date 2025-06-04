@@ -603,3 +603,82 @@ Contrairement aux méthodes naïves d’augmentation ou de réduction de cadence
 \newpage 
 \subsection{Analyse spectrale}
 \subsubsection{Analyse d’une tranche de signal par TFD}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=18cm]{screenshots/somme_2_cos.png}
+    \caption{exemple d'un signal généré avec: N = 1000 ; fe = 1000 ; f0 = 50 ; f1 = 120 ; A0 = 1.0 ; A1 = 0.5}
+\end{figure}
+
+\newpage
+La transformée de Fourier discrète d’une fenêtre de Hanning de longueur $N$ présente un module en forme de triangle centré autour de la fréquence zéro. Par analyse expérimentale :
+
+\begin{itemize}
+    \item Le lobe principal est bien approximé par une forme triangulaire.
+    \item La largeur de ce lobe est d’environ $\frac{4}{N}$ en fréquence normalisée (de $-2/N$ à $+2/N$).
+    \item Après normalisation, la surface sous ce lobe principal (approximation de l’intégrale) est proche de 1, ce qui montre que la majorité de l’énergie spectrale est concentrée dans cette bande.
+\end{itemize}
+
+Cela justifie l’utilisation fréquente de la fenêtre de Hanning dans les analyses spectrales pour limiter les effets de repliement spectral tout en gardant une bonne localisation fréquentielle.\\
+
+Lorsque la longueur $N$ de la fenêtre de Hanning augmente, on observe que le module de sa transformée de Fourier devient plus "fin". Cela s’explique par le compromis temps–fréquence inhérent à la transformée de Fourier : une plus grande durée d’observation (fenêtre plus longue) permet une meilleure résolution fréquentielle. Ainsi :
+
+\begin{itemize}
+    \item Le lobe principal devient plus étroit, avec une largeur approximative de $\frac{4}{N}$.
+    \item Le spectre conserve sa forme triangulaire mais est plus concentré autour de la fréquence zéro.
+    \item L’amplitude du lobe principal augmente légèrement pour compenser la réduction de largeur (la surface reste $\approx 1$).
+\end{itemize}
+
+Cela confirme que la fenêtre de Hanning agit comme un filtre passe-bas doux, et que plus elle est longue, plus elle isole finement une bande de fréquences autour de zéro.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=18cm]{screenshots/triangle_hanning.png}
+    \caption{FFT fenêtre de Hanning N = 64}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=18cm]{screenshots/triangle_hanning_1000.png}
+    \caption{FFT fenêtre de Hanning N = 1000}
+\end{figure}
+
+\newpage
+
+On considère le signal :
+\[
+x(t) = A \cos(2\pi f_0 t) + A \cos(2\pi f_1 t)
+\]
+avec $f_0 = 40~\text{kHz}$, $f_1 = 61~\text{kHz}$, $f_e = 512~\text{kHz}$ et $A = 1$. Le signal est échantillonné et une tranche de $N = 256$ points est extraite pour calculer la TFD après pondération par une fenêtre de Hanning.\\
+
+La transformée de Fourier discrète d’une sinusoïde après pondération par une fenêtre de Hanning est égale à la convolution de la TFD idéale (un pic) avec la TFD de la fenêtre (un triangle de surface unité et de largeur $\frac{4}{N}$).
+
+Chaque sinusoïde donne donc lieu à un lobe triangulaire :
+
+- centré sur $f_0$ et $f_1$ ;\\
+
+- de largeur en fréquence réelle :
+\[
+\Delta f = \frac{4f_e}{N} = \frac{4 \cdot 512000}{256} = 8000~\text{Hz}
+\] \\
+
+Le module de la TFD est donc la somme de deux triangles :\\
+
+- chacun de largeur $8$ kHz (en fréquence) ; \\
+
+- et de surface égale à $1$ (normalisation par la fenêtre).\\
+
+Le spectre montre deux pics nets élargis autour de 40 kHz et 61 kHz, ce qui permet d’estimer les fréquences dominantes du signal malgré la résolution limitée par la fenêtre.\\
+
+La fenêtre de Hanning réduit le leakage spectral (fuites autour des pics), rendant les pics plus nets par rapport à une TFD sans fenêtre.\\
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=18cm]{screenshots/TFD_hanning_signal.png}
+    \caption{TFD avec fenêtre de Hanning}
+\end{figure}
+
+\subsubsection{Effets de quelques fenêtres}
+
+
+

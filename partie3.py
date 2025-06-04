@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.io import wavfile
 from scipy.signal import find_peaks
-from scipy.fft import fft, fftfreq
-
+from scipy.fft import fft, fftfreq, fftshift
+from scipy.signal.windows import hann
 #Q3.1
 
 # Paramètres du signal
@@ -292,3 +292,92 @@ for ax, (label, path) in zip(axs, file_paths.items()):
 
 plt.tight_layout()
 plt.show()
+
+# Q3.4
+# 3.4.1
+
+import numpy as np
+
+def generer_signal(N, fe, f0, f1, A0, A1):
+    t = np.arange(N) / fe  # vecteur temps en secondes
+    x = A0 * np.cos(2 * np.pi * f0 * t) + A1 * np.cos(2 * np.pi * f1 * t)
+    return x
+
+N = 1000     # nombre d'échantillons
+fe = 1000    # fréquence d'échantillonnage (Hz)
+f0 = 50      # fréquence 1 (Hz)
+f1 = 120     # fréquence 2 (Hz)
+A0 = 1.0     # amplitude 1
+A1 = 0.5     # amplitude 2
+
+# Génération du signal
+x = generer_signal(N, fe, f0, f1, A0, A1)
+
+# Affichage
+t = np.arange(N) / fe
+plt.plot(t, x)
+plt.xlabel("Temps (s)")
+plt.ylabel("Amplitude")
+plt.title("Signal échantillonné")
+plt.grid(True)
+plt.show()
+
+
+def verifier_hanning_fft(N):
+    # Fenêtre de Hanning
+    w = hann(N, sym=False)
+
+    # Calcul de la FFT centrée et normalisée
+    W = fft(w, 4096)  # on augmente la résolution FFT
+    W = np.abs(fftshift(W))  # module + centrage
+
+    # Axe fréquentiel normalisé [-0.5, 0.5]
+    f = fftshift(fftfreq(len(W), d=1))  # pas d=1 car normalisé
+
+    # Normalisation pour surface unité (approximation)
+    W /= np.sum(W)
+
+    # Tracé
+    plt.figure(figsize=(8, 4))
+    plt.plot(f, W, label="|FFT(Hanning)|")
+    plt.title(f"FFT d'une fenêtre de Hanning de longueur N={N}")
+    plt.xlabel("Fréquence normalisée")
+    plt.ylabel("Amplitude normalisée")
+    plt.grid(True)
+    plt.xlim(-0.05, 0.05)
+    plt.axvline(-2/N, color='r', linestyle='--', label='-2/N')
+    plt.axvline(2/N, color='r', linestyle='--', label='2/N')
+    plt.legend()
+    plt.show()
+
+# Exemple avec N = 64
+verifier_hanning_fft(64)
+
+def analyse_tranche_tfd(signal, fe):
+    N = len(signal)
+    window = hann(N)
+    windowed_signal = signal * window
+    X = np.abs(fft(windowed_signal))
+    freqs = fftfreq(N, 1/fe)
+
+    # On ne garde que la moitié positive du spectre
+    half = slice(0, N//2)
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(freqs[half], X[half])
+    plt.title("TFD de la tranche pondérée par une fenêtre de Hanning")
+    plt.xlabel("Fréquence (Hz)")
+    plt.ylabel("Amplitude")
+    plt.grid(True)
+    plt.show()
+
+# Paramètres du test
+fe = 512_000  
+f0 = 40_000   
+f1 = 61_000   
+A0 = A1 = 1
+N = 256       
+
+# Génération et analyse
+signal = generer_signal(N, fe, f0, f1, A0, A1)
+analyse_tranche_tfd(signal, fe)
