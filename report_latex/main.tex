@@ -39,10 +39,20 @@
 \usepackage{listings}
 \usepackage{indentfirst}
 \usepackage{xcolor}
-
-
-
+\usepackage{pgfplotstable} % à mettre dans le préambule
+\pgfplotstableset{col sep=comma} % si ton fichier est séparé par des virgules
 %====================== INFORMATION ET REGLES ======================
+\newcommand{\fs}{f_\mathrm{s}}
+\newcommand{\Tframe}{T_\mathrm{frame}}
+\newcommand{\Nframe}{N_\mathrm{frame}}
+\newcommand{\overlap}{\mathrm{overlap}}
+\newcommand{\Nhop}{N_\mathrm{hop}}
+\newcommand{\Ntrames}{N_\mathrm{trames}}
+\newcommand{\freq}{f}
+\newcommand{\midi}{\mathrm{MIDI}}
+\newcommand{\Tmin}{T_\mathrm{min}}
+\newcommand{\FFT}{\mathcal{F}}
+\newcommand{\Nmin}{N_\mathrm{min}}
 
 %rajouter les numérotation pour les \paragraphe et \subparagraphe
 \setcounter{secnumdepth}{4}

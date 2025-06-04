@@ -710,5 +710,382 @@ Cette interpolation plus fine permet d’observer les pics spectraux de manière
 
 \newpage
 \section{Partie 4: Application : détection de pitch}
-\subsection{La prosodie : le sens d’une phrase}
+\subsection{Code python}
+On a fait le code suivant :
 
+\begin{lstlisting}[language=python]
+    import numpy as np
+import scipy.io.wavfile as wav
+import scipy.signal as signal
+import os
+
+
+def is_voiced(frame, energy_threshold):
+    """
+    Determine si une trame est voisee selon son energie.
+    """
+    energy = np.sum(frame ** 2) / len(frame)
+    return energy > energy_threshold
+
+def autocorrelation_pitch(frame, fs, fmin, fmax):
+    """
+    Estime la frequence fondamentale d'une trame via l'autocorrelation.
+    Retourne None si la recherche echoue.
+    """
+    # Soustraire la moyenne pour centrer
+    frame = frame - np.mean(frame)
+    # Calculer l'autocorrelation
+    corr = np.correlate(frame, frame, mode='full')
+    corr = corr[len(corr)//2:]  # ne garder que la partie positive
+    # Determiner les bornes de lag correspondant a fmin et fmax
+    lag_min = int(fs / fmax)
+    lag_max = int(fs / fmin)
+    if lag_max >= len(corr):
+        lag_max = len(corr) - 1
+    # Chercher le pic dans la plage de lag
+    segment = corr[lag_min:lag_max+1]
+    if len(segment) == 0:
+        return None
+    peak_idx = np.argmax(segment) + lag_min
+    if corr[peak_idx] <= 0:
+        return None
+    # Convertir le lag en frequence
+    freq = fs / peak_idx
+    return freq
+
+def freq_to_midi(freq):
+    """
+    Convertit une frequence en numero de note MIDI.
+    Si freq est None ou <= 0, retourne None.
+    """
+    if freq is None or freq <= 0:
+        return None
+    return int(np.round(69 + 12 * np.log2(freq / 440.0)))
+
+def detect_pitch_sequence(
+    wav_filename,
+    frame_duration=0.030,
+    pitch_range=(80.0, 400.0),
+    min_note_duration=0.1
+):
+    """
+    Fonction principale de detection de pitch et de notes.
+
+    Parametres :
+    - wav_filename : chemin vers le fichier .wav
+    - frame_duration : duree (en secondes) de chaque trame
+    - pitch_range : (fmin, fmax) domaine de recherche du pitch en Hz
+    - min_note_duration : duree minimale d'une note en secondes
+
+    Retourne :
+    - matrice numpy de shape (N, 3) avec colonnes [temps, frequence, note_MIDI]
+    """
+    # Lecture du signal
+    fs, signal_data = wav.read(wav_filename)
+
+    # Si le signal est stereo, le convertir en mono
+    if signal_data.ndim == 2:
+        signal_data = signal_data.mean(axis=1)
+
+    # Normaliser le signal entre -1 et 1 si necessaire
+    if signal_data.dtype != np.float32 and signal_data.dtype != np.float64:
+        max_val = np.iinfo(signal_data.dtype).max
+        signal_data = signal_data.astype(np.float32) / max_val
+
+    # Parametres de tramage
+    frame_len = int(frame_duration * fs)
+    hop_len = frame_len  # trames sans recouvrement
+    num_frames = int(np.floor(len(signal_data) / hop_len))
+
+    # Calcul du seuil d'energie (par exemple, 10% de l'energie max d'une trame)
+    energies = []
+    for i in range(num_frames):
+        start = i * hop_len
+        frame = signal_data[start : start + frame_len]
+        energies.append(np.sum(frame ** 2) / len(frame))
+    energy_threshold = 0.05 * np.max(energies)
+
+    # Allocation des resultats
+    times = np.zeros(num_frames)
+    freqs = np.zeros(num_frames)
+    midis = np.zeros(num_frames, dtype=int)
+
+    fmin, fmax = pitch_range
+
+    # Parcours des trames
+    for i in range(num_frames):
+        start = i * hop_len
+        frame = signal_data[start : start + frame_len]
+        times[i] = (start + frame_len / 2) / fs  # temps au centre de la trame
+
+        if is_voiced(frame, energy_threshold):
+            freq = autocorrelation_pitch(frame, fs, fmin, fmax)
+            freqs[i] = freq if freq is not None else 0.0
+            midi = freq_to_midi(freq) if freq is not None else 0
+            midis[i] = midi if midi is not None else 0
+        else:
+            freqs[i] = 0.0
+            midis[i] = 0
+
+    # Detection des notes : regrouper les trames de meme note MIDI consecutives
+    min_frames_per_note = int(np.ceil(min_note_duration / frame_duration))
+    i = 0
+    while i < num_frames:
+        if midis[i] > 0:
+            j = i + 1
+            while j < num_frames and midis[j] == midis[i]:
+                j += 1
+            length = j - i
+            if length < min_frames_per_note:
+                # Pas assez long : considerer comme bruit -> zero
+                freqs[i:j] = 0.0
+                midis[i:j] = 0
+            i = j
+        else:
+            i += 1
+
+    # Construire la matrice resultat
+    result = np.column_stack((times, freqs, midis))
+    return result
+
+# Utilisation
+for file in os.listdir("./fichierzip/"):
+    if file.endswith(".wav") or file.endswith(".WAV"):
+        print(f"Traitement du fichier : {file}")
+
+        result = detect_pitch_sequence(
+            f"./fichierzip/{file}",
+            frame_duration=0.025,
+            pitch_range=(80.0, 300.0),
+            min_note_duration=0.1
+        )
+        np.savetxt(f"./partie4_output/pitch_detection_{file[:-4]}.csv", result, delimiter=",",
+                header="time,frequency,midi", comments='')    
+\end{lstlisting}
+
+\subsection{Analyse du code}
+
+Le code implémente l’analyse d’un signal audio (\texttt{.wav}) pour en extraire, trame par trame, la fréquence fondamentale (pitch) et la convertir en note MIDI. Les grandes étapes sont les suivantes :
+
+\begin{enumerate}
+  \item \textbf{Lecture et prétraitement du signal }  
+    \begin{itemize}
+      \item Charger le fichier \texttt{.wav} (échantillonnage \(\fs\)) et, si nécessaire, convertir un signal stéréo en mono (moyenne des deux canaux).  
+      \item Normaliser le signal dans \([-1, 1]\) si les échantillons sont stockés en entiers (int16, etc.).  
+    \end{itemize}
+  \item \textbf{Découpage en trames (framing) }  
+    \begin{itemize}
+      \item Choisir une \emph{durée de trame} (\(\Tframe\), typiquement 20–30 ms).  
+      \item Déterminer :  
+        \begin{itemize}
+          \item \(\Nframe = \lfloor \Tframe \times \fs\rfloor\) : nombre d’échantillons par trame,  
+          \item \(\overlap\) : taux de recouvrement (45 \%–50 \% recommandé),  
+          \item \(\Nhop = \lfloor \Nframe \times (1 - \overlap)\rfloor\) : décalage entre trames successives.  
+        \end{itemize}
+      \item Calculer le nombre total de trames \(\Ntrames\) de façon à couvrir tout le signal (on peut éventuellement tronquer la fin si elle ne remplit pas une trame complète).  
+    \end{itemize}
+  \item \textbf{Calcul du seuil d’énergie }  
+    \begin{itemize}
+      \item Pour chaque trame, on calcule l’énergie moyenne :  
+        \[
+          E_i \;=\; \frac{1}{\Nframe}\sum_{n=0}^{\Nframe-1} x^2_i[n]\,,
+        \]
+        où \(x_i\) est la trame \(i\).  
+      \item Le \emph{seuil d’énergie} est fixé à
+        \[
+          E_{\text{seuil}} \;=\; \alpha \times \max_i E_i,
+        \]
+        avec \(\alpha\approx 0{,}01\text{--}0{,}05\).  
+      \item Toute trame dont l’énergie est inférieure à \(E_{\text{seuil}}\) est immédiatement classée « non-voisée » (silence, bruit faible) et reçoit \(\freq=0\) et \(\midi=0\).  
+    \end{itemize}
+  \item \textbf{Estimation du pitch par FFT (fonction \texttt{fft\_pitch}) }  
+    \begin{itemize}
+      \item Pour chaque trame \emph{voisée}, on applique d’abord une fenêtre de Hamming \(w[n]\) :  
+        \[
+          x_{\text{win}}[n] = \bigl(x[n] - \bar x\bigr)\times w[n],\quad w[n] = 0{,}54 - 0{,}46\cos\Bigl(\tfrac{2\pi n}{\Nframe-1}\Bigr)\,,
+        \]
+        afin de réduire les effets de discontinuités aux bords.  
+      \item On calcule la FFT réelle (rFFT) \(\FFT\bigl\{x_{\text{win}}\bigr\}\) et son module \(M[k]\).  
+      \item On détermine l’indice \(k^*\) correspondant à la plus grande amplitude dans la plage de fréquences \([f_{\min},\,f_{\max}]\). La fréquence estimée vaut alors  
+        \[
+          f^* \;=\; f_s \times \frac{k^*}{\Nframe}\,.
+        \]
+      \item Si l’amplitude maximale est trop faible (artefact, bruit), on renvoie \(\freq=\text{None}\).  
+    \end{itemize}
+  \item \textbf{Conversion en note MIDI }  
+    \[
+      \midi \;=\; 69 + 12\,\log_2\!\Bigl(\tfrac{f^*}{440}\Bigr)\,,
+      \quad\text{arrondi à l’entier le plus proche.}
+    \]
+    Si \(f^*\) est \(\le 0\) ou \(\text{None}\), on assigne \(\midi = 0\).  
+  \item \textbf{Regroupement trame par trame en notes continues }  
+    \begin{itemize}
+      \item Définir une \emph{durée minimale de note} \(\Tmin\) (par exemple 50 ms).  
+      \item Calculer le nombre de trames minimal \(\Nmin = \lceil \Tmin / (\Tframe\times(1-\overlap))\rceil\).  
+      \item Parcourir la séquence de \(\midi[i]\). Lorsqu’un segment contigu de même note MIDI dure moins de \(\Nmin\) trames, on l’étiquette comme artefact et on le ramène à zéro (\(\freq=0,\ \midi=0\)).  
+    \end{itemize}
+  \item \textbf{Assemblage du résultat }  
+    Le code retourne une matrice de taille \(\Ntrames\times 3\) :  
+    \[
+      \bigl[t_i,\;f_i,\;\midi_i\bigr]_{i=1..\Ntrames}, 
+      \quad t_i = \frac{(i-1)\Nhop + \Nframe/2}{f_s}\,.
+    \]
+    On peut ensuite exporter vers un CSV ou un tableur pour obtenir colonnes \texttt{time, frequency, midi}.  
+\end{enumerate}
+
+\subsection{Variables clés à ajuster et leur rôle}
+
+\begin{itemize}
+  \item \texttt{frame\_duration} (\(\Tframe\)) : durée d’une trame en secondes (20–30 ms).  
+    \begin{itemize}
+      \item \(\downarrow\) \(\Tframe\) → meilleure résolution temporelle (utile pour parole rapide), mais pic spectral moins précis.  
+      \item \(\uparrow\) \(\Tframe\) → meilleure précision fréquentielle (utile pour signaux musicaux stables), mais moins de flexibilité temporelle.  
+    \end{itemize}
+  \item \texttt{overlap} : fraction de recouvrement (souvent 0,5).  
+    \begin{itemize}
+      \item \(\uparrow\) recouvrement → moins de trous temporels, meilleurs résultats sur signaux courts, mais coût de calcul plus élevé.  
+      \item \(\downarrow\) recouvrement → gain de temps, mais plus de « trames isolées » et de zéros.  
+    \end{itemize}
+  \item \texttt{energy\_factor} (\(\alpha\)) : proportion de l’énergie maximale fixant le seuil (\(1\%\) à \(5\%\)).  
+    \begin{itemize}
+      \item \(\uparrow\alpha\) → seuil plus haut → on filtre davantage (conserve moins de trames voisées), risque d’ignorer des sons faibles.  
+      \item \(\downarrow\alpha\) → seuil plus bas → on conserve plus de trames, mais on risque d’interpréter du bruit comme un pitch.  
+    \end{itemize}
+  \item \texttt{pitch\_range} (\(f_{\min}, f_{\max}\)) : plage de fréquences (Hz) à analyser.  
+    \begin{itemize}
+      \item Choisir \([f_{\min},f_{\max}]\) en fonction du signal :  
+        \begin{itemize}
+          \item Voix masculine adulte $\approx 80-180 Hz$  
+          \item Voix féminine $\approx 150-270 Hz$  
+          \item Flûte traversière $\approx 250-2000 Hz$  
+        \end{itemize}
+      \item Plage trop étroite → on rate le pitch si la fondamentale du signal est en dehors.  
+      \item Plage trop large → on peut capter des harmoniques ou du bruit comme faux pic.  
+    \end{itemize}
+  \item \texttt{min\_note\_duration} (\(\Tmin\)) : durée minimale d’une note (à partir de 0,03 s).  
+    \begin{itemize}
+      \item $\uparrow$ \(\Tmin\) → on supprime les segments très courts (bruits, ouvertures de consonnes), mais on risque de découper des notes légères ou rapides.  
+      \item $\downarrow$ \(\Tmin\) → on conserve même des notes très brèves, mais on accepte davantage de faux pitch (artefacts).  
+    \end{itemize}
+\end{itemize}
+
+\subsection{Résultats}
+
+En analysant les fichiers CSV générés, on remarque que cette methode marche bien pour certains enregistrements mais pas d'autres. On remarque également que certains intervalles sont mal détéctés avec f = 0 et midi = 0 alors qu'il n'y a pas de silence dans l'audio.\\
+
+Ceci est dû au différents paramètres de la méthode, qui peuvent être ajustés pour améliorer la détection du pitch. Par exemple, en réduisant le seuil d'énergie ou en élargissant la plage de fréquences, on peut obtenir de meilleurs résultats sur certains signaux.\\
+
+On a mis deux exemples de quelques lignes des fichiers CSV générés (page \pageref{tab:katchatu}) et (page \pageref{tab:flute}). Pour le fichier contenant la détection de pitch pour la flute (page \pageref{tab:flute}), on a enlevé quelques lignes à l'affichage pour montrer les différentes notes détéctées.
+
+\begin{table}[h]
+\centering
+\caption{Extrait du fichier CSV pour la détection de pitch KATCHATU} 
+\label{tab:katchatu}
+\pgfplotstabletypeset[
+    columns={rownum,time,frequency,midi},
+    create on use/rownum/.style={
+        create col/expr={\pgfplotstablerow+1}
+    },
+    column type=l,
+    columns/temps/.style={string type, column name=Temps (s)},
+    columns/frequence/.style={fixed, fixed zerofill, precision=1, column name=Fréquence (Hz)},
+    columns/note/.style={column name=Note MIDI},
+    every head row/.style={before row=\hline, after row=\hline},
+    every last row/.style={after row=\hline},
+    skip rows between index={39}{201},]
+    {../partie4_output/pitch_detection_KATCHATU.csv}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Extrait du fichier CSV pour la détection de pitch fluteircam} 
+\label{tab:flute}
+\pgfplotstabletypeset[
+    columns={rownum,time,frequency,midi},
+    create on use/rownum/.style={
+        create col/expr={\pgfplotstablerow+1}
+    },
+    column type=l,
+    columns/temps/.style={string type, column name=Temps (s)},
+    columns/frequence/.style={fixed, fixed zerofill, precision=1, column name=Fréquence (Hz)},
+    columns/note/.style={column name=Note MIDI},
+    every head row/.style={before row=\hline, after row=\hline},
+    every last row/.style={after row=\hline},
+    skip rows between index={0}{30},
+    skip rows between index={50}{60},
+    skip rows between index={70}{80},
+    skip rows between index={89}{548},]
+    {../partie4_output/pitch_detection_fluteircam.csv}
+\end{table}
+
+\subsection{Sources fréquentes d’erreurs (intervalles avec \(\freq = 0\))}
+
+On a discuté précédémment du role des variables clés à ajuster pour la détection de pitch. Cependant, il est fréquent de rencontrer des intervalles où la fréquence détectée est \(\freq = 0\) ou \(\midi = 0\) malgré un signal audible. Voici les principales raisons possibles et leurs remèdes :
+\begin{enumerate}
+  \item \textbf{Seuil d’énergie trop élevé}  
+    Même un signal stable et régulier (voix, instrument, etc.) peut présenter une énergie inférieure à \(E_{\text{seuil}}\) s’il est enregistré avec un faible niveau sonore.  
+    \begin{itemize}
+      \item \emph{Symptôme} : toutes les trames ont \(\freq = 0\) malgré un son continu clairement perceptible.  
+      \item \emph{Remède} : abaisser \texttt{energy\_factor} (par exemple de 0{,}05 à 0{,}01 ou 0{,}005).  
+    \end{itemize}
+
+  \item \textbf{Plage de fréquences mal adaptée}  
+    Si la fondamentale du signal est située en dehors de l’intervalle \([f_{\min}, f_{\max}]\), l’algorithme basé sur la FFT risque de ne détecter aucun pic significatif.  
+    \begin{itemize}
+      \item \emph{Symptôme} : toutes les trames ont \(\freq = 0\), bien que le signal soit périodique, car sa fréquence fondamentale est hors de la plage spécifiée.  
+      \item \emph{Remède} : élargir \([f_{\min}, f_{\max}]\) pour inclure la fréquence réelle attendue.  
+    \end{itemize}
+
+  \item \textbf{Durée de note trop courte par rapport à la durée de trame}  
+    Si un son est extrêmement bref (inférieur à \(\Tframe\)), il se peut qu’aucune trame complète ne soit disponible pour l’analyse, entraînant l’absence de détection de fréquence.  
+    \begin{itemize}
+      \item \emph{Symptôme} : sons très courts → trames vides ou \(\freq = 0\).  
+      \item \emph{Remède} : réduire \texttt{frame\_duration} (par exemple de 25\,ms à 10\,ms) et ajuster \texttt{min\_note\_duration} en conséquence.  
+    \end{itemize}
+
+  \item \textbf{Fenêtrage insuffisant ou absence de recouvrement}  
+    Sans application d’une fenêtre (comme Hamming) et sans recouvrement entre les trames, l’analyse spectrale peut être dégradée (effets de discontinuité), réduisant la clarté des pics de fréquence.  
+    \begin{itemize}
+      \item \emph{Symptôme} : certaines trames produisent un spectre bruité sans pic dominant → \(\freq = 0\).  
+      \item \emph{Remède} :  
+        \begin{itemize}
+          \item Appliquer une fenêtre de Hamming sur chaque trame.  
+          \item Utiliser un recouvrement de \(\overlap \approx 0{,}5\) pour que chaque portion du signal soit analysée plusieurs fois.  
+        \end{itemize}
+    \end{itemize}
+
+  \item \textbf{Segments non périodiques (parole, bruit, consonnes)}  
+    Certains segments de signal, notamment les bruits transitoires, consonnes occlusives ou affriquées dans la parole, ne présentent pas de périodicité stable. L’algorithme retourne alors \(\freq = \text{None}\), soit \(\freq = 0\).  
+    \begin{itemize}
+      \item \emph{Symptôme} : portions du signal (notamment en parole) avec \(\freq = 0\), surtout sur les consonnes.  
+      \item \emph{Remède} : ce comportement est normal ; seules les portions périodiques (voyelles, instruments tenus) doivent donner une fréquence définie.  
+    \end{itemize}
+
+  \item \textbf{Artifacts liés au post-traitement des notes}  
+    Si la durée minimale de note (\texttt{min\_note\_duration}) est trop longue, des notes courtes mais valides peuvent être éliminées.  
+    \begin{itemize}
+      \item \emph{Symptôme} : séquences de trames avec \(\freq = 0\) à l’intérieur de passages pourtant musicaux ou chantés.  
+      \item \emph{Remède} : réduire \texttt{min\_note\_duration} proportionnellement à \(\Tframe\) et à \(\overlap\) pour permettre la détection de notes brèves.  
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Conclusion et remarques pertinentes}
+En ayant connaissance du type de signal analysé (voix, instrument, bruit), on peut ajuster les paramètres de l’algorithme pour obtenir une détection de pitch plus fiable. Voici quelques recommandations générales :
+
+\begin{itemize}
+  \item \textbf{Approche FFT vs. autocorrélation }: l’estimation par FFT est plus robuste sur des signaux sinusoïdaux purs (même très courts), car elle détecte directement la raie fondamentale dans le domaine fréquentiel.  
+  \item \textbf{Importance du fenêtrage et du recouvrement }: un hachage correct (Hamming) et un recouvrement (environ 50 \%) sont essentiels pour éviter des artefacts de bord qui génèrent des zéros « fausses détections ».  
+  \item \textbf{Réglage fin des paramètres }:  
+    \begin{itemize}
+      \item \(\Tframe\) : 15–30 ms selon la nature du signal (voix vs instrument vs sinus très court).  
+      \item \(\alpha\) (energy\_factor) : 0,005–0,05 : à adapter en fonction de l’amplitude relative du signal et du bruit de fond.  
+      \item \([f_{\min}, f_{\max}]\) : couvrir exactement le registre attendu (une plage plus large influe plus de bruit, une plage trop étroite ratera la fondamentale).  
+      \item \(\Tmin\) : réguler la suppression des artefacts très courts (consonnes, clics) sans éliminer les notes souhaitées.  
+    \end{itemize}
+  \item \textbf{Limites connues } :  
+    \begin{itemize}
+      \item Sur les plages de parole (consonnes, transitions), on ne récupère pas de pitch (zéros), mais ceci est normal : il n’y a pas de fondamentale stable.  
+      \item Les instruments très riches en harmoniques (pianos, cordes pincées) peuvent conduire à un « faux pic » si la première harmonique est plus forte que la fondamentale : on peut alors détecter la seconde harmonique comme pitch. Pour corriger, on implante un post-filtrage (cherche le « plus bas » des pics récurrents).  
+      \item Bruits de fond forts ou distorsion du signal se traduisent par des pics peu fiables : parfois \(\freq=0\) même si le bruit est audible.  
+    \end{itemize}
+\end{itemize}

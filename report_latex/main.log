@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  4 JUN 2025 17:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.5.14)  4 JUN 2025 21:20
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1063,46 +1063,93 @@ File: listings.cfg 2023/02/27 1.9 listings configuration
 Package: listings 2023/02/27 1.9 (Carsten Heinz)
  (/usr/share/texlive/texmf-dist/tex/latex/tools/indentfirst.sty
 Package: indentfirst 2023/07/02 v1.03 Indent first paragraph (DPC)
-) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplotstable.sty (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplotstable 2021/05/15 v1.18.1 Table typesetting and Pretty-printing (1.18.1)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgfplots/pgfplots.sty (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.revision.tex)
+Package: pgfplots 2021/05/15 v1.18.1 Data Visualization (1.18.1)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.code.tex
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscore.code.tex
+\t@pgfplots@toka=\toks50
+\t@pgfplots@tokb=\toks51
+\t@pgfplots@tokc=\toks52
+\pgfplots@tmpa=\dimen303
+\c@pgfplots@coordindex=\count335
+\c@pgfplots@scanlineindex=\count336
+ (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgfplotssysgeneric.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgfplotslibrary.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_loader.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryfpu.code.tex)
+Package pgfplots: loading complementary utilities for your pgf version...
+\t@pgf@toka=\toks53
+\t@pgf@tokb=\toks54
+\t@pgf@tokc=\toks55
+(/usr/share/texlive/texmf-dist/tex/generic/pgfplots/oldpgfcompatib/pgfplotsoldpgfsupp_pgfutil-common-lists.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructure.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsliststructureext.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsarray.code.tex
+\c@pgfplotsarray@tmp=\count337
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsmatrix.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstableshared.code.tex
+\c@pgfplotstable@counta=\count338
+\t@pgfplotstable@a=\toks56
+) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/liststructure/pgfplotsdeque.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsbinary.data.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotsutil.verb.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/pgflibrarypgfplots.surfshading.code.tex
+\c@pgfplotslibrarysurf@no=\count339
+ (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/sys/pgflibrarypgfplots.surfshading.pgfsys-pdftex.def))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolormap.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/util/pgfplotscolor.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsstackedplots.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsplothandlers.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplothandler.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsmeshplotimage.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.scaling.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotscoordprocessing.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.errorbars.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.markers.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplotsticks.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/pgfplots.paths.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduledecorations.code.tex
+\pgfdecoratedcompleteddistance=\dimen304
+\pgfdecoratedremainingdistance=\dimen305
+\pgfdecoratedinputsegmentcompleteddistance=\dimen306
+\pgfdecoratedinputsegmentremainingdistance=\dimen307
+\pgf@decorate@distancetomove=\dimen308
+\pgf@decorate@repeatstate=\count340
+\pgfdecorationsegmentamplitude=\dimen309
+\pgfdecorationsegmentlength=\dimen310
+)
+\tikz@lib@dec@box=\box74
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathmorphing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathmorphing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarydecorations.pathreplacing.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/decorations/pgflibrarydecorations.pathreplacing.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/libs/tikzlibrarypgfplots.contourlua.code.tex)
+\pgfplots@numplots=\count341
+\pgfplots@xmin@reg=\dimen311
+\pgfplots@xmax@reg=\dimen312
+\pgfplots@ymin@reg=\dimen313
+\pgfplots@ymax@reg=\dimen314
+\pgfplots@zmin@reg=\dimen315
+\pgfplots@zmax@reg=\dimen316
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryplotmarks.code.tex
+File: tikzlibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
+File: pgflibraryplotmarks.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgfplots/numtable/pgfplotstable.coltype.code.tex))) (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count335
-\l__pdf_internal_box=\box74
+\l__color_backend_stack_int=\count342
+\l__pdf_internal_box=\box75
 ) (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 73.
-LaTeX Font Info:    ... okay on input line 73.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 83.
+LaTeX Font Info:    ... okay on input line 83.
  (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count336
-\scratchdimen=\dimen303
-\scratchbox=\box75
-\nofMPsegments=\count337
-\nofMParguments=\count338
-\everyMPshowfont=\toks50
-\MPscratchCnt=\count339
-\MPscratchDim=\dimen304
-\MPnumerator=\count340
-\makeMPintoPDFobject=\count341
-\everyMPtoPDFconversion=\toks51
+\scratchcounter=\count343
+\scratchdimen=\dimen317
+\scratchbox=\box76
+\nofMPsegments=\count344
+\nofMParguments=\count345
+\everyMPshowfont=\toks57
+\MPscratchCnt=\count346
+\MPscratchDim=\dimen318
+\MPnumerator=\count347
+\makeMPintoPDFobject=\count348
+\everyMPtoPDFconversion=\toks58
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
@@ -1113,7 +1160,7 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring OFF on input line 73.
+Package hyperref Info: Link coloring OFF on input line 83.
  (./main.out) (./main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -1162,8 +1209,13 @@ Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 ))
-\c@lstlisting=\count342
- (./title.tex
+\c@lstlisting=\count349
+
+
+Package pgfplots Warning: running in backwards compatibility mode (unsuitable tick labels; missing features). Consider writing \pgfplotsset{compat=1.18} into your preamble.
+ on input line 83.
+
+(./title.tex
 LaTeX Font Info:    Trying to load font information for U+msa on input line 26.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1178,7 +1230,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \openout5 = `main.toc'.
 
  (./rapport.tex [0]
-<screenshots/signal_echantillone.png, id=144, 722.7pt x 289.08pt>
+<screenshots/signal_echantillone.png, id=171, 722.7pt x 289.08pt>
 File: screenshots/signal_echantillone.png Graphic file (type png)
 <use screenshots/signal_echantillone.png>
 Package pdftex.def Info: screenshots/signal_echantillone.png  used on input line 19.
@@ -1193,17 +1245,17 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--78
 
  []
 
-<screenshots/puissance_et_energie.png, id=160, 563.10374pt x 143.53625pt>
+<screenshots/puissance_et_energie.png, id=186, 563.10374pt x 143.53625pt>
 File: screenshots/puissance_et_energie.png Graphic file (type png)
 <use screenshots/puissance_et_energie.png>
 Package pdftex.def Info: screenshots/puissance_et_energie.png  used on input line 83.
 (pdftex.def)             Requested size: 426.79134pt x 108.7908pt.
-<screenshots/quantification_graph.png, id=161, 867.24pt x 433.62pt>
+<screenshots/quantification_graph.png, id=187, 867.24pt x 433.62pt>
 File: screenshots/quantification_graph.png Graphic file (type png)
 <use screenshots/quantification_graph.png>
 Package pdftex.def Info: screenshots/quantification_graph.png  used on input line 91.
 (pdftex.def)             Requested size: 441.01772pt x 220.50809pt.
-<screenshots/quantification_graph_zoomed.png, id=162, 867.24pt x 433.62pt>
+<screenshots/quantification_graph_zoomed.png, id=188, 867.24pt x 433.62pt>
 File: screenshots/quantification_graph_zoomed.png Graphic file (type png)
 <use screenshots/quantification_graph_zoomed.png>
 Package pdftex.def Info: screenshots/quantification_graph_zoomed.png  used on input line 99.
@@ -1217,18 +1269,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 103--104
  []
 
 [2 <./screenshots/puissance_et_energie.png> <./screenshots/quantification_graph.png>]
-<screenshots/snr_quantification.png, id=172, 448.67625pt x 90.3375pt>
+<screenshots/snr_quantification.png, id=198, 448.67625pt x 90.3375pt>
 File: screenshots/snr_quantification.png Graphic file (type png)
 <use screenshots/snr_quantification.png>
 Package pdftex.def Info: screenshots/snr_quantification.png  used on input line 113.
 (pdftex.def)             Requested size: 448.67516pt x 90.33727pt.
  [3 <./screenshots/quantification_graph_zoomed.png> <./screenshots/snr_quantification.png>]
-<screenshots/signal_enregistré.png, id=186, 462.528pt x 346.896pt>
+<screenshots/signal_enregistré.png, id=211, 462.528pt x 346.896pt>
 File: screenshots/signal_enregistré.png Graphic file (type png)
 <use screenshots/signal_enregistré.png>
 Package pdftex.def Info: screenshots/signal_enregistré.png  used on input line 154.
 (pdftex.def)             Requested size: 284.52756pt x 213.40593pt.
-<screenshots/mot1_graphe.png, id=187, 462.528pt x 346.896pt>
+<screenshots/mot1_graphe.png, id=212, 462.528pt x 346.896pt>
 File: screenshots/mot1_graphe.png Graphic file (type png)
 <use screenshots/mot1_graphe.png>
 Package pdftex.def Info: screenshots/mot1_graphe.png  used on input line 163.
@@ -1238,7 +1290,7 @@ Overfull \hbox (38.41269pt too wide) in paragraph at lines 163--164
  [][] 
  []
 
-<screenshots/mot2_graphe.png, id=188, 462.528pt x 346.896pt>
+<screenshots/mot2_graphe.png, id=213, 462.528pt x 346.896pt>
 File: screenshots/mot2_graphe.png Graphic file (type png)
 <use screenshots/mot2_graphe.png>
 Package pdftex.def Info: screenshots/mot2_graphe.png  used on input line 169.
@@ -1253,7 +1305,7 @@ LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 23
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-<screenshots/ecart_autocorrelation.png, id=198, 722.7pt x 289.08pt>
+<screenshots/ecart_autocorrelation.png, id=223, 722.7pt x 289.08pt>
 File: screenshots/ecart_autocorrelation.png Graphic file (type png)
 <use screenshots/ecart_autocorrelation.png>
 Package pdftex.def Info: screenshots/ecart_autocorrelation.png  used on input line 253.
@@ -1268,18 +1320,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 260--261
 
  []
 
-<screenshots/valeur_rapport.png, id=217, 557.08125pt x 149.55875pt>
+<screenshots/valeur_rapport.png, id=242, 557.08125pt x 149.55875pt>
 File: screenshots/valeur_rapport.png Graphic file (type png)
 <use screenshots/valeur_rapport.png>
 Package pdftex.def Info: screenshots/valeur_rapport.png  used on input line 266.
 (pdftex.def)             Requested size: 426.79134pt x 114.58322pt.
 [6 <./screenshots/ecart_autocorrelation.png> <./screenshots/valeur_rapport.png>]
-<screenshots/generation_signaux.png, id=226, 867.24pt x 578.16pt>
+<screenshots/generation_signaux.png, id=251, 867.24pt x 578.16pt>
 File: screenshots/generation_signaux.png Graphic file (type png)
 <use screenshots/generation_signaux.png>
 Package pdftex.def Info: screenshots/generation_signaux.png  used on input line 299.
 (pdftex.def)             Requested size: 483.69684pt x 322.47055pt.
-<screenshots/generation_signaux_zoom.png, id=227, 867.24pt x 578.16pt>
+<screenshots/generation_signaux_zoom.png, id=252, 867.24pt x 578.16pt>
 File: screenshots/generation_signaux_zoom.png Graphic file (type png)
 <use screenshots/generation_signaux_zoom.png>
 Package pdftex.def Info: screenshots/generation_signaux_zoom.png  used on input line 305.
@@ -1303,7 +1355,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 313--314
 
  []
 
-<screenshots/autocorr_signaux_30ms.png, id=255, 867.24pt x 578.16pt>
+<screenshots/autocorr_signaux_30ms.png, id=280, 867.24pt x 578.16pt>
 File: screenshots/autocorr_signaux_30ms.png Graphic file (type png)
 <use screenshots/autocorr_signaux_30ms.png>
 Package pdftex.def Info: screenshots/autocorr_signaux_30ms.png  used on input line 324.
@@ -1311,7 +1363,7 @@ Package pdftex.def Info: screenshots/autocorr_signaux_30ms.png  used on input li
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<screenshots/autocorr_signaux_80ms.png, id=256, 867.24pt x 578.16pt>
+<screenshots/autocorr_signaux_80ms.png, id=281, 867.24pt x 578.16pt>
 File: screenshots/autocorr_signaux_80ms.png Graphic file (type png)
 <use screenshots/autocorr_signaux_80ms.png>
 Package pdftex.def Info: screenshots/autocorr_signaux_80ms.png  used on input line 330.
@@ -1324,7 +1376,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 LaTeX Warning: Text page 9 contains only floats.
 
 [9 <./screenshots/autocorr_signaux_30ms.png> <./screenshots/autocorr_signaux_80ms.png>]
-<screenshots/autocorrelation_chat_2.png, id=271, 867.24pt x 289.08pt>
+<screenshots/autocorrelation_chat_2.png, id=296, 867.24pt x 289.08pt>
 File: screenshots/autocorrelation_chat_2.png Graphic file (type png)
 <use screenshots/autocorrelation_chat_2.png>
 Package pdftex.def Info: screenshots/autocorrelation_chat_2.png  used on input line 346.
@@ -1345,7 +1397,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 353--355
  []
 
 [10 <./screenshots/autocorrelation_chat_2.png>]
-<screenshots/echantillonage_partie3.png, id=280, 1084.05pt x 578.16pt>
+<screenshots/echantillonage_partie3.png, id=305, 1084.05pt x 578.16pt>
 File: screenshots/echantillonage_partie3.png Graphic file (type png)
 <use screenshots/echantillonage_partie3.png>
 Package pdftex.def Info: screenshots/echantillonage_partie3.png  used on input line 392.
@@ -1366,7 +1418,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 405--406
  []
 
 [11 <./screenshots/echantillonage_partie3.png>]
-<screenshots/fft_detection_f0.png, id=288, 722.7pt x 289.08pt>
+<screenshots/fft_detection_f0.png, id=313, 722.7pt x 289.08pt>
 File: screenshots/fft_detection_f0.png Graphic file (type png)
 <use screenshots/fft_detection_f0.png>
 Package pdftex.def Info: screenshots/fft_detection_f0.png  used on input line 411.
@@ -1381,7 +1433,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 424--425
 
  []
 
-<screenshots/fft_avec_zero_padding.png, id=290, 867.24pt x 289.08pt>
+<screenshots/fft_avec_zero_padding.png, id=315, 867.24pt x 289.08pt>
 File: screenshots/fft_avec_zero_padding.png Graphic file (type png)
 <use screenshots/fft_avec_zero_padding.png>
 Package pdftex.def Info: screenshots/fft_avec_zero_padding.png  used on input line 448.
@@ -1389,7 +1441,7 @@ Package pdftex.def Info: screenshots/fft_avec_zero_padding.png  used on input li
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<screenshots/fft_avec_zero_padding_zoom.png, id=291, 867.24pt x 289.08pt>
+<screenshots/fft_avec_zero_padding_zoom.png, id=316, 867.24pt x 289.08pt>
 File: screenshots/fft_avec_zero_padding_zoom.png Graphic file (type png)
 <use screenshots/fft_avec_zero_padding_zoom.png>
 Package pdftex.def Info: screenshots/fft_avec_zero_padding_zoom.png  used on input line 454.
@@ -1412,7 +1464,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 575--576
 
  []
 
-<screenshots/fft_cadence.png, id=366, 722.7pt x 697.4055pt>
+<screenshots/fft_cadence.png, id=391, 722.7pt x 697.4055pt>
 File: screenshots/fft_cadence.png Graphic file (type png)
 <use screenshots/fft_cadence.png>
 Package pdftex.def Info: screenshots/fft_cadence.png  used on input line 591.
@@ -1421,7 +1473,7 @@ Package pdftex.def Info: screenshots/fft_cadence.png  used on input line 591.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [15]
-<screenshots/somme_2_cos.png, id=381, 1339.8858pt x 697.4055pt>
+<screenshots/somme_2_cos.png, id=406, 1339.8858pt x 697.4055pt>
 File: screenshots/somme_2_cos.png Graphic file (type png)
 <use screenshots/somme_2_cos.png>
 Package pdftex.def Info: screenshots/somme_2_cos.png  used on input line 609.
@@ -1439,7 +1491,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 622--623
 
  []
 
-<screenshots/triangle_hanning.png, id=387, 1339.8858pt x 697.4055pt>
+<screenshots/triangle_hanning.png, id=412, 1339.8858pt x 697.4055pt>
 File: screenshots/triangle_hanning.png Graphic file (type png)
 <use screenshots/triangle_hanning.png>
 Package pdftex.def Info: screenshots/triangle_hanning.png  used on input line 636.
@@ -1452,7 +1504,7 @@ Overfull \hbox (28.45273pt too wide) in paragraph at lines 636--637
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<screenshots/triangle_hanning_1000.png, id=388, 1339.8858pt x 697.4055pt>
+<screenshots/triangle_hanning_1000.png, id=413, 1339.8858pt x 697.4055pt>
 File: screenshots/triangle_hanning_1000.png Graphic file (type png)
 <use screenshots/triangle_hanning_1000.png>
 Package pdftex.def Info: screenshots/triangle_hanning_1000.png  used on input line 642.
@@ -1505,7 +1557,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 673--674
 
  []
 
-<screenshots/TFD_hanning_signal.png, id=404, 1339.8858pt x 697.4055pt>
+<screenshots/TFD_hanning_signal.png, id=429, 1339.8858pt x 697.4055pt>
 File: screenshots/TFD_hanning_signal.png Graphic file (type png)
 <use screenshots/TFD_hanning_signal.png>
 Package pdftex.def Info: screenshots/TFD_hanning_signal.png  used on input line 677.
@@ -1520,7 +1572,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 683--684
 
  []
 
-<screenshots/3_4_2_figures.png, id=405, 1339.8858pt x 697.4055pt>
+<screenshots/3_4_2_figures.png, id=430, 1339.8858pt x 697.4055pt>
 File: screenshots/3_4_2_figures.png Graphic file (type png)
 <use screenshots/3_4_2_figures.png>
 Package pdftex.def Info: screenshots/3_4_2_figures.png  used on input line 689.
@@ -1534,7 +1586,7 @@ Overfull \hbox (28.45273pt too wide) in paragraph at lines 689--690
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [19 <./screenshots/TFD_hanning_signal.png>]
-<screenshots/3_4_2_figures_avec_padding.png, id=412, 1339.8858pt x 697.4055pt>
+<screenshots/3_4_2_figures_avec_padding.png, id=437, 1339.8858pt x 697.4055pt>
 File: screenshots/3_4_2_figures_avec_padding.png Graphic file (type png)
 <use screenshots/3_4_2_figures_avec_padding.png>
 Package pdftex.def Info: screenshots/3_4_2_figures_avec_padding.png  used on input line 707.
@@ -1547,27 +1599,58 @@ Overfull \hbox (28.45273pt too wide) in paragraph at lines 707--708
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[20 <./screenshots/3_4_2_figures.png>]) [21 <./screenshots/3_4_2_figures_avec_padding.png>] (./main.aux)
+[20 <./screenshots/3_4_2_figures.png>] [21 <./screenshots/3_4_2_figures_avec_padding.png>] [22] [23]
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 901.
+ [24]
+Underfull \hbox (badness 10000) in paragraph at lines 974--975
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 976--977
+
+ []
+
+PGFPlots: reading {../partie4_output/pitch_detection_KATCHATU.csv}
+
+LaTeX Warning: Float too large for page by 11.96414pt on input line 997.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+PGFPlots: reading {../partie4_output/pitch_detection_fluteircam.csv}
+
+LaTeX Warning: Float too large for page by 11.96414pt on input line 1019.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 1021.
+
+[25] [26]) [27] [28] [29] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: B1509D91E8FACC29B4CF7C3C541552D2;5413.
+(rerunfilecheck)             Checksum: A87C1F3FA851D61ADDDD7631E05AE747;6385.
  ) 
 Here is how much of TeX's memory you used:
- 27733 strings out of 476182
- 503043 string characters out of 5795595
- 2347975 words of memory out of 5000000
- 49087 multiletter control sequences out of 15000+600000
- 574054 words of font info for 66 fonts, out of 8000000 for 9000
+ 39199 strings out of 476182
+ 878576 string characters out of 5795595
+ 2365975 words of memory out of 5000000
+ 60215 multiletter control sequences out of 15000+600000
+ 578699 words of font info for 84 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 99i,8n,101p,1058b,2112s stack positions out of 10000i,1000n,20000p,200000b,200000s
- </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (23 pages, 2422500 bytes).
+ 99i,10n,101p,1058b,2118s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ectt0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0900.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm0700.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecti1728.600pk> </home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx2074.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (31 pages, 2499356 bytes).
 PDF statistics:
- 982 PDF objects out of 1000 (max. 8388607)
- 449 compressed objects within 5 object streams
- 167 named destinations out of 1000 (max. 500000)
- 335 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1300 PDF objects out of 1440 (max. 8388607)
+ 712 compressed objects within 8 object streams
+ 343 named destinations out of 1000 (max. 500000)
+ 375 words of extra memory for PDF output out of 10000 (max. 10000000)
 
