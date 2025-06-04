@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1749049634.13933 "/home/deappool/Desktop/td1_TS/report_latex/main.tex" "main.pdf" "main" 1749049640.9137 0
+["pdflatex"] 1749050134.70612 "/home/deappool/Desktop/td1_TS/report_latex/main.tex" "main.pdf" "main" 1749050140.85109 0
   "/etc/texmf/web2c/texmf.cnf" 1747213474.30734 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1000.600pk" 1747228883.09601 25396 98c969c7a3f2dda5e24c694e3dba7ebc ""
   "/home/deappool/.texlive2023/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk" 1747228883.935 31928 9c3ec00a6888e3b4ee4e6b9bfeaeb974 ""
@@ -222,12 +222,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1747214407.61874 128028 f533b797fba58d231669ea19e894e23e ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1747214465 6800797 541359d380416f2bd8292dc1f3dfbb0c ""
-  "main.aux" 1749049640.54337 7518 cee0504f7447ee701d6731540f76a39b "pdflatex"
-  "main.out" 1749049640.54537 4889 a54acb1cf117dde779ab0c7f81f42300 "pdflatex"
+  "main.aux" 1749050140.48561 7971 6231a8075bcb3a7b19c905c746be88c4 "pdflatex"
+  "main.out" 1749050140.48761 5413 b1509d91e8facc29b4cf7c3c541552d2 "pdflatex"
   "main.tex" 1748371830.72854 2549 f752299557c64f42c9958aea77a51ae1 ""
-  "main.toc" 1749049640.54637 2233 c59d0822af1a56ea29041f1e895b94f2 "pdflatex"
-  "rapport.tex" 1749049628.5974 36039 456dc346e3db7bfd09936010930620bd ""
+  "main.toc" 1749050140.49061 2436 adce575be0e22bb63be2c5d5be3bd1da "pdflatex"
+  "rapport.tex" 1749050128.77097 36340 e2dee84e0288c86039d52817818bac5c ""
   "screenshots/3_4_2_figures.png" 1749048815.3305 82297 e89a3de67f35d53f85650662e6f3cc63 ""
+  "screenshots/3_4_2_figures_avec_padding.png" 1749049928.63774 88171 7081e931ddf749222cfa2782aeb63362 ""
   "screenshots/TFD_hanning_signal.png" 1749045880.12926 46964 b38bd7b556667bc7258cc067be6bbcea ""
   "screenshots/autocorr_signaux_30ms.png" 1748374504.64359 134448 887826c328c487c96429819a481ad2eb ""
   "screenshots/autocorr_signaux_80ms.png" 1748374603.58929 168326 d133f9e4a1619a532fd48eeb77f1a12c ""

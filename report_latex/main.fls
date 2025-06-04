@@ -497,6 +497,11 @@ INPUT ./screenshots/3_4_2_figures.png
 INPUT ./screenshots/3_4_2_figures.png
 INPUT ./screenshots/3_4_2_figures.png
 INPUT ./screenshots/3_4_2_figures.png
+INPUT ./screenshots/3_4_2_figures_avec_padding.png
+INPUT ./screenshots/3_4_2_figures_avec_padding.png
+INPUT ./screenshots/3_4_2_figures_avec_padding.png
+INPUT ./screenshots/3_4_2_figures_avec_padding.png
+INPUT ./screenshots/3_4_2_figures_avec_padding.png
 INPUT main.aux
 INPUT ./main.out
 INPUT ./main.out

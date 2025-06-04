@@ -430,3 +430,42 @@ for i, fenetre_type in enumerate(fenetres):
 
 plt.tight_layout()
 plt.show()
+
+def analyser_spectre_pad(subplot, signal, fe, fenetre_type, N_fft=1024):
+    """Analyse le spectre du signal avec zero-padding à N_fft points."""
+    N = len(signal)
+    # Zero-padding à N_fft
+    signal_padded = np.zeros(N_fft)
+    signal_padded[:N] = signal
+
+    X = np.abs(np.fft.fft(signal_padded))
+    freqs = np.fft.fftfreq(N_fft, 1 / fe)
+    half = slice(0, N_fft // 2)
+
+    subplot.plot(freqs[half], X[half])
+    subplot.set_title(f"Spectre avec fenêtre {fenetre_type} (Zero-padding)")
+    subplot.grid(True)
+    subplot.set_xlabel("Fréquence (Hz)")
+    subplot.set_ylabel("Amplitude")
+
+# Paramètres du signal
+N = 256     # nombre d'échantillons initiaux
+fe = 8000   # fréquence d'échantillonnage (Hz)
+f0 = 995    # fréquence 1 (Hz)
+f1 = 1200   # fréquence 2 (Hz)
+A0 = 1      # amplitude 1
+A1 = 0.01   # amplitude 2
+
+# Génération du signal
+signal = generer_signal(N, fe, f0, f1, A0, A1)
+
+fenetres = ['hanning', 'hamming', 'blackman']
+
+fig, axs = plt.subplots(3, figsize=(8, 12))
+
+for i, fenetre_type in enumerate(fenetres):
+    signal_fenetre = fenetre(signal, fenetre_type)
+    analyser_spectre_pad(axs[i], signal_fenetre, fe, fenetre_type, N_fft=1024)
+
+plt.tight_layout()
+plt.show()

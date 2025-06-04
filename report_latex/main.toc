@@ -21,3 +21,5 @@
 \contentsline {subsection}{\numberline {3.4}Analyse spectrale}{16}{subsection.3.4}%
 \contentsline {subsubsection}{\numberline {3.4.1}Analyse d’une tranche de signal par TFD}{16}{subsubsection.3.4.1}%
 \contentsline {subsubsection}{\numberline {3.4.2}Effets de quelques fenêtres}{19}{subsubsection.3.4.2}%
+\contentsline {section}{\numberline {4}Partie 4: Application : détection de pitch}{21}{section.4}%
+\contentsline {subsection}{\numberline {4.1}La prosodie : le sens d’une phrase}{21}{subsection.4.1}%
